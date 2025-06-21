@@ -6,10 +6,11 @@ An open-source, AI-powered data analysis and accounting assistant designed to si
 
 ### ✅ Project Setup
 - [ ] Backend API development (FastAPI/Python)
-- [ ] Frontend application (React/Vite)
+- [x] Frontend application (React/Vite)
 - [x] Docker containerization
 - [ ] Database setup and configuration
 - [ ] Environment configuration
+- [ ] Connect Frontend and Backend
 
 ### 🔐 User Management
 - [ ] User registration system
