@@ -172,7 +172,7 @@ export default function AboutPage() {
                   <li>✅ Docker containerization</li>
                   <li>✅ Basic project structure</li>
                   <li>✅ Frontend React/Vite setup</li>
-                  <li>✅ Backend FastAPI framework</li>
+                  <li>🔄 Backend FastAPI framework</li>
                   <li>✅ Open source release</li>
                 </ul>
               </div>
