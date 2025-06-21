@@ -1,89 +1,90 @@
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Badge } from "../../components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
 import {
   Brain,
   Github,
-  Twitter,
-  Linkedin,
   Heart,
   Code,
   Users,
   Target,
   Lightbulb,
   Rocket,
-  CheckCircle,
   Calendar,
-  Star,
+  Shield,
+  Zap,
 } from "lucide-react"
 import { Link } from "react-router-dom"
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen py-12">
-      <div className="container mx-auto px-4">
+      <div className="px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4" variant="outline">
-            Nuestra Historia
+            About DataMindAI
           </Badge>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Sobre
-            <span className="text-blue-600"> DataMindAI</span>
+            Democratizing
+            <span className="text-blue-600 block">Financial Intelligence</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Nacimos de la frustración de usar herramientas contables complicadas y caras. Creemos que el análisis
-            financiero inteligente debe ser accesible para todos.
+            We believe that intelligent financial analysis should be accessible to everyone, not just large corporations.
+            DataMindAI is our mission to make this a reality.
           </p>
         </div>
 
-        {/* Historia del proyecto */}
+        {/* Story */}
         <section className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6 flex items-center">
                 <Lightbulb className="h-8 w-8 text-yellow-500 mr-3" />
-                La Historia de DataMindAI
+                The DataMindAI Story
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Todo comenzó en 2023 cuando, como muchos emprendedores, me encontré luchando con hojas de Excel
-                  interminables y software contable que costaba una fortuna. Pasaba horas creando fórmulas complejas
-                  solo para entender si mi negocio iba bien o mal.
+                  DataMindAI was born out of a recurring problem I kept noticing: the lack of accessible, modern, and truly useful accounting
+                  tools for small businesses and independent professionals. After years of building real-world systems
+                  like a management platform for internet service providers
+                  I understood how overwhelming financial data management can be without reliable tech support.
                 </p>
                 <p>
-                  La llegada de ChatGPT y los LLMs cambió todo. Me di cuenta de que podía crear un asistente que
-                  entendiera mis datos financieros y me diera respuestas en lenguaje natural. Pero había un problema:
-                  mis datos eran demasiado sensibles para enviarlos a la nube.
+                  During this journey, I also launched Softkit Academy, my own coding academy where I taught programming through personalized
+                  lessons. There, I saw firsthand how even highly motivated learners struggled to integrate AI and data analysis into their everyday work.
                 </p>
                 <p>
-                  Así nació DataMindAI: un asistente contable con IA que puedes auto-hospedar, mantener tus datos
-                  privados, y que sea completamente gratis y open source. Porque creemos que las herramientas
-                  financieras inteligentes no deberían ser un privilegio de las grandes empresas.
+                  That's what led me to create DataMindAI a free, open source, self-hostable accounting agent powered by AI. It can generate, read,
+                  and analyze Excel files, produce reports, make decisions, and provide feedback using APIs like OpenAI, Gemini, Anthropic, or Claude.
+                  It's designed to be flexible: it works locally with Docker or via an optional subscription, including support for crypto, credit/debit cards and alternative payment methods like PayPal and Stripe.
+                </p>
+                <p>
+                  My goal with DataMindAI is simple: to democratize access to AI-assisted accounting tools, giving users full control over their data and logic and helping those who
+                  need it most grow with confidence and independence.
                 </p>
               </div>
+
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-8">
               <div className="text-center">
                 <Brain className="h-16 w-16 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Nuestra Misión</h3>
+                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
                 <p className="text-gray-600 mb-6">
-                  Democratizar el análisis financiero inteligente haciendo que sea accesible, privado y gratuito para
-                  todos.
+                  Democratize intelligent financial analysis by making it accessible, private and free for everyone.
                 </p>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-blue-600">1.2k+</div>
+                    <div className="text-2xl font-bold text-blue-600">0</div>
                     <div className="text-sm text-gray-600">GitHub Stars</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">500+</div>
-                    <div className="text-sm text-gray-600">Usuarios Activos</div>
+                    <div className="text-2xl font-bold text-green-600">0</div>
+                    <div className="text-sm text-gray-600">Active Users</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-purple-600">50+</div>
-                    <div className="text-sm text-gray-600">Contribuidores</div>
+                    <div className="text-2xl font-bold text-purple-600">1</div>
+                    <div className="text-sm text-gray-600">Contributors</div>
                   </div>
                 </div>
               </div>
@@ -91,15 +92,15 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Filosofía Open Source */}
+        {/* Open Source Philosophy */}
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-6 flex items-center justify-center">
               <Heart className="h-8 w-8 text-red-500 mr-3" />
-              Filosofía Open Source
+              Open Source Philosophy
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Creemos en la transparencia, la colaboración y el poder de la comunidad para crear mejores herramientas.
+              We believe in transparency, collaboration and the power of community to create better tools.
             </p>
           </div>
 
@@ -107,12 +108,11 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Code className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <CardTitle>Transparencia Total</CardTitle>
+                <CardTitle>Total Transparency</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Todo nuestro código es público. Puedes revisar, auditar y verificar exactamente cómo funciona
-                  DataMindAI.
+                  All our code is public. You can review, audit and verify exactly how DataMindAI works.
                 </p>
               </CardContent>
             </Card>
@@ -120,11 +120,11 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Users className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                <CardTitle>Comunidad Primero</CardTitle>
+                <CardTitle>Community First</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Las decisiones importantes se toman con la comunidad. Tu voz importa en el futuro de DataMindAI.
+                  Important decisions are made with the community. Your voice matters in DataMindAI's future.
                 </p>
               </CardContent>
             </Card>
@@ -132,12 +132,11 @@ export default function AboutPage() {
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Target className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <CardTitle>Propósito Social</CardTitle>
+                <CardTitle>Social Purpose</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Nuestro objetivo no es solo el beneficio, sino democratizar el acceso a herramientas financieras
-                  inteligentes.
+                  Our goal is not just profit, but to democratize access to intelligent financial tools.
                 </p>
               </CardContent>
             </Card>
@@ -149,165 +148,206 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-6 flex items-center justify-center">
               <Rocket className="h-8 w-8 text-orange-500 mr-3" />
-              Roadmap 2024-2025
+              2024-2025 Roadmap
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Nuestros planes para hacer de DataMindAI la mejor herramienta de análisis financiero del mundo.
+              Our development roadmap to build the most comprehensive AI-powered financial analysis platform.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              {/* Q1 2024 */}
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-green-600" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">Q1 2024</h3>
-                    <Badge className="bg-green-100 text-green-800">Completado</Badge>
-                  </div>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>✅ Lanzamiento de la versión beta</li>
-                    <li>✅ Integración con OpenAI y Gemini</li>
-                    <li>✅ Lectura básica de archivos Excel</li>
-                    <li>✅ Chat con IA contable</li>
-                    <li>✅ Instalación Docker simplificada</li>
-                  </ul>
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* Phase 1: Foundation */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-green-600" />
                 </div>
               </div>
-
-              {/* Q2 2024 */}
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-blue-600" />
-                  </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 1: Foundation (Q1 2024)</h3>
+                  <Badge className="bg-green-100 text-green-800 !transition-none hover:bg-green-100 hover:opacity-100">Completed</Badge>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">Q2 2024</h3>
-                    <Badge className="bg-blue-100 text-blue-800">En Progreso</Badge>
-                  </div>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>🔄 Reportes automáticos avanzados</li>
-                    <li>🔄 Integración con Ollama local</li>
-                    <li>🔄 Soporte para múltiples idiomas</li>
-                    <li>🔄 API REST completa</li>
-                    <li>🔄 Interfaz móvil optimizada</li>
-                  </ul>
+                <ul className="space-y-2 text-gray-600">
+                  <li>✅ Docker containerization</li>
+                  <li>✅ Basic project structure</li>
+                  <li>✅ Frontend React/Vite setup</li>
+                  <li>✅ Backend FastAPI framework</li>
+                  <li>✅ Open source release</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 2: Core Features */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
-
-              {/* Q3 2024 */}
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6 text-orange-600" />
-                  </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 2: Core Features (Q2 2024)</h3>
+                  <Badge className="bg-blue-100 text-blue-800 !transition-none hover:bg-blue-100 hover:opacity-100">In Progress</Badge>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">Q3 2024</h3>
-                    <Badge variant="outline">Planificado</Badge>
-                  </div>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>📋 Integraciones bancarias (Plaid)</li>
-                    <li>📋 Conectores para QuickBooks y Xero</li>
-                    <li>📋 Análisis predictivo con ML</li>
-                    <li>📋 Alertas inteligentes automáticas</li>
-                    <li>📋 Colaboración en equipo</li>
-                  </ul>
+                <ul className="space-y-2 text-gray-600">
+                  <li>🔄 Backend API development (FastAPI/Python)</li>
+                  <li>🔄 Database setup and configuration</li>
+                  <li>🔄 User registration and authentication system</li>
+                  <li>🔄 Excel file upload and parsing</li>
+                  <li>🔄 Basic data analysis and financial metrics</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 3: AI Integration */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-purple-600" />
                 </div>
               </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 3: AI Integration (Q3 2024)</h3>
+                  <Badge className="bg-gray-100 text-gray-800 !transition-none hover:bg-gray-100 hover:opacity-100">Planned</Badge>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li>⏳ OpenAI API integration</li>
+                  <li>⏳ Google Gemini API integration</li>
+                  <li>⏳ Anthropic API integration</li>
+                  <li>⏳ Ollama local integration</li>
+                  <li>⏳ AI-powered financial insights and recommendations</li>
+                </ul>
+              </div>
+            </div>
 
-              {/* Q4 2024 */}
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Rocket className="w-6 h-6 text-purple-600" />
-                  </div>
+            {/* Phase 4: Advanced Features */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-orange-600" />
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-bold">Q4 2024</h3>
-                    <Badge variant="outline">Futuro</Badge>
-                  </div>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>🚀 Marketplace de plugins</li>
-                    <li>🚀 IA especializada por industria</li>
-                    <li>🚀 Certificaciones de compliance</li>
-                    <li>🚀 Versión Enterprise completa</li>
-                    <li>🚀 Expansión internacional</li>
-                  </ul>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 4: Advanced Features (Q4 2024)</h3>
+                  <Badge className="bg-gray-100 text-gray-800 !transition-none hover:bg-gray-100 hover:opacity-100">Planned</Badge>
                 </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li>⏳ Advanced data visualization and charts</li>
+                  <li>⏳ Report generation (PDF/Excel export)</li>
+                  <li>⏳ Financial ratio calculations</li>
+                  <li>⏳ Anomaly detection in financial data</li>
+                  <li>⏳ Predictive analytics</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 5: Enterprise Features */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-red-600" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 5: Enterprise Features (Q1 2025)</h3>
+                  <Badge className="bg-gray-100 text-gray-800 !transition-none hover:bg-gray-100 hover:opacity-100">Planned</Badge>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li>⏳ Team collaboration features</li>
+                  <li>⏳ Advanced security features</li>
+                  <li>⏳ Integration with accounting software (QuickBooks)</li>
+                  <li>⏳ Real-time collaboration features</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 6: Future Vision */}
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-indigo-600" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-2">
+                  <h3 className="text-xl font-bold">Phase 6: Future Vision (Q2 2025+)</h3>
+                  <Badge className="bg-gray-100 text-gray-800 !transition-none hover:bg-gray-100 hover:opacity-100">Planned</Badge>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li>⏳ Mobile app development</li>
+                  <li>⏳ Advanced AI analytics</li>
+                  <li>⏳ Multi-currency support</li>
+                  <li>⏳ Custom AI model training</li>
+                  <li>⏳ Enterprise SSO/LDAP integration</li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Founder Profile */}
+        {/* Team */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Conoce al Fundador</h2>
+            <h2 className="text-3xl font-bold mb-6">Meet the Team</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              La persona detrás de DataMindAI y su visión para democratizar el análisis financiero.
+              A small but passionate team dedicated to democratizing financial intelligence.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="overflow-hidden">
-              <div className="grid lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-1 bg-gradient-to-br from-blue-50 to-purple-50 p-8 flex flex-col items-center justify-center">
-                  <Avatar className="w-32 h-32 mb-6">
-                    <AvatarImage src="/placeholder.svg?height=128&width=128" alt="Fundador" />
-                    <AvatarFallback className="text-2xl">JD</AvatarFallback>
-                  </Avatar>
-                  <h3 className="text-2xl font-bold mb-2">Juan Desarrollador</h3>
-                  <p className="text-gray-600 text-center mb-4">Fundador & CEO</p>
-                  <div className="flex space-x-4">
-                    <a href="https://github.com" className="text-gray-600 hover:text-blue-600" target="_blank" rel="noopener noreferrer">
-                      <Github className="h-5 w-5" />
-                    </a>
-                    <a href="https://twitter.com" className="text-gray-600 hover:text-blue-600" target="_blank" rel="noopener noreferrer">
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                    <a href="https://linkedin.com" className="text-gray-600 hover:text-blue-600" target="_blank" rel="noopener noreferrer">
-                      <Linkedin className="h-5 w-5" />
-                    </a>
+            <Card>
+              <div className="grid lg:grid-cols-3 gap-8 p-8">
+                <div className="lg:col-span-1">
+                  <div className="text-center">
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <span className="text-white text-3xl font-bold">B</span>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Biscen Fabián Pichardo Rosado</h3>
+                    <p className="text-gray-600 mb-4">Founder & Lead Developer. Alias EssEnemiGz</p>
+                    <div className="flex justify-center space-x-4">
+                      <a href="https://github.com/EssEnemiGz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600">
+                        <Github className="h-5 w-5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="lg:col-span-2 p-8">
-                  <h4 className="text-xl font-bold mb-4">Mi Historia</h4>
+                  <h4 className="text-xl font-bold mb-4">My Story</h4>
                   <div className="space-y-4 text-gray-600">
-                    <p>
-                      Soy un desarrollador full-stack con más de 8 años de experiencia construyendo productos SaaS. He
-                      trabajado en startups fintech y he visto de primera mano lo frustrante que puede ser el análisis
-                      financiero para pequeñas y medianas empresas.
-                    </p>
-                    <p>
-                      Después de fundar mi propia startup y luchar con herramientas contables caras y complicadas,
-                      decidí que tenía que existir una mejor manera. DataMindAI es mi respuesta a ese problema.
-                    </p>
-                    <p>
-                      Creo firmemente en el poder del open source y la IA para democratizar herramientas que antes solo
-                      estaban al alcance de grandes corporaciones. Mi objetivo es que cualquier emprendedor pueda tener
-                      acceso a análisis financiero de nivel enterprise.
-                    </p>
-                  </div>
+                    <div className="space-y-4 text-gray-600">
+                      <p>
+                        I'm an 18 year old developer from the Dominican Republic, passionate about
+                        using technology to help people and shape the future through AI. I believe
+                        that artificial intelligence should be accessible, useful, and empowering for everyone.
+                      </p>
+                      <p>
+                        In 2025, I started building DataMindAI as a personal project to learn React,
+                        FastAPI, Azure, and contribute to open source. But more importantly, I wanted
+                        to create a free, self-hostable assistant that helps individuals and small businesses
+                        understand their finances through intelligent tools.
+                      </p>
+                      <p>
+                        DataMindAI is designed to bring smart accounting to everyone no paywalls, no hidden fees, and
+                        no data harvesting. Just powerful AI, under your control.
+                      </p>
+                    </div>
 
-                  <div className="mt-6">
-                    <h5 className="font-semibold mb-3">Experiencia</h5>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Ex-CTO en FinTech Startup (2019-2023)</li>
-                      <li>• Senior Developer en Google (2017-2019)</li>
-                      <li>• Fundador de 2 startups exitosas</li>
-                      <li>• Contribuidor activo en proyectos open source</li>
-                      <li>• Speaker en conferencias de tecnología</li>
-                    </ul>
+                    <div className="mt-6">
+                      <h5 className="font-semibold mb-3">Experience</h5>
+                      <ul className="space-y-2 text-sm text-gray-600">
+                        <li>Full-stack developer with 4+ years of experience</li>
+                        <li>Self-learning developer since 2021</li>
+                        <li>Expert in Linux, Flask and Python</li>
+                        <li>Founder of DataMindAI (2025–present)</li>
+                        <li>Developer of ISP Management System for local providers (2025–present)</li>
+                        <li>Open source contributor in accounting & AI tools (2025–present)</li>
+                        <li>Founder & Instructor at Softkit Academy (2024–2025)</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -315,79 +355,92 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Valores y Principios */}
+        {/* Values and Principles */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Nuestros Valores</h2>
+            <h2 className="text-3xl font-bold mb-6">Our Values</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Los principios que guían cada decisión que tomamos en DataMindAI.
+              The principles that guide everything we do at DataMindAI.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="font-bold mb-2">Usuario Primero</h3>
-              <p className="text-sm text-gray-600">
-                Cada feature se diseña pensando en resolver problemas reales de nuestros usuarios.
-              </p>
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Shield className="h-12 w-12 text-red-600 mx-auto mb-4" />
+                <CardTitle>Privacy First</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Your financial data is sacred. We believe in self-hosting and local processing.
+                </p>
+              </CardContent>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Code className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="font-bold mb-2">Transparencia</h3>
-              <p className="text-sm text-gray-600">
-                Código abierto, decisiones públicas, y comunicación honesta siempre.
-              </p>
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Heart className="h-12 w-12 text-pink-600 mx-auto mb-4" />
+                <CardTitle>Open Source</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Transparency and collaboration. We believe in the power of community.
+                </p>
+              </CardContent>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="font-bold mb-2">Comunidad</h3>
-              <p className="text-sm text-gray-600">Construimos junto con nuestra comunidad, no solo para ella.</p>
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Zap className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
+                <CardTitle>Innovation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  We constantly explore new AI technologies to improve financial analysis.
+                </p>
+              </CardContent>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-8 w-8 text-orange-600" />
-              </div>
-              <h3 className="font-bold mb-2">Excelencia</h3>
-              <p className="text-sm text-gray-600">
-                No lanzamos nada que no usaríamos nosotros mismos en nuestros negocios.
-              </p>
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Users className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                <CardTitle>Accessibility</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Financial intelligence should be available to everyone, not just corporations.
+                </p>
+              </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* CTA Final */}
+        {/* Final CTA */}
         <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-12 text-white">
-          <h2 className="text-3xl font-bold mb-4">¿Quieres ser parte de la historia?</h2>
+          <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
           <p className="text-xl mb-8 opacity-90">
-            Únete a nuestra comunidad y ayúdanos a construir el futuro del análisis financiero.
+            Help us democratize financial intelligence. Contribute, use, or spread the word about DataMindAI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/community">
+            <a href="https://github.com/EssEnemiGz/datamindai" target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="secondary" className="px-8">
-                Únete a la Comunidad
+                <Github className="mr-2 h-5 w-5" />
+                Star on GitHub
               </Button>
-            </Link>
-            <Link to="/contribute">
+            </a>
+            <Link to="/register">
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 border-white text-white hover:bg-white hover:text-blue-600"
+                className="px-8 border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
               >
-                Contribuir al Proyecto
+                Start Using Free
               </Button>
             </Link>
           </div>
-          <p className="text-sm mt-6 opacity-75">🌟 Síguenos en GitHub • 💬 Únete a Discord • 📧 Newsletter mensual</p>
+          <p className="text-sm mt-6 opacity-75">
+            Together we can make financial intelligence accessible to everyone
+          </p>
         </div>
       </div>
     </div>

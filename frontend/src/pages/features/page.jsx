@@ -26,85 +26,85 @@ export default function FeaturesPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4" variant="outline">
-            Características Técnicas
+            Technical Features
           </Badge>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Todo lo que necesitas para
-            <span className="text-blue-600 block">análisis financiero inteligente</span>
+            Everything you need for
+            <span className="text-blue-600 block">intelligent financial analysis</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            DataMindAI combina la potencia de la IA con la seguridad del auto-hospedaje para ofrecerte la mejor
-            experiencia de análisis contable.
+            DataMindAI combines the power of AI with the security of self-hosting to provide you with the best
+            accounting analysis experience.
           </p>
         </div>
 
-        {/* Tabs de características */}
+        {/* Feature Tabs */}
         <Tabs defaultValue="ai-analysis" className="mb-16">
           <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
-            <TabsTrigger value="ai-analysis">IA Contable</TabsTrigger>
+            <TabsTrigger value="ai-analysis">AI Accounting</TabsTrigger>
             <TabsTrigger value="excel-integration">Excel</TabsTrigger>
-            <TabsTrigger value="reports">Reportes</TabsTrigger>
-            <TabsTrigger value="security">Seguridad</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+            <TabsTrigger value="security">Security</TabsTrigger>
             <TabsTrigger value="integrations">APIs</TabsTrigger>
-            <TabsTrigger value="hosting">Hospedaje</TabsTrigger>
+            <TabsTrigger value="hosting">Hosting</TabsTrigger>
           </TabsList>
 
-          {/* IA Contable */}
+          {/* AI Accounting */}
           <TabsContent value="ai-analysis" className="space-y-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-6 flex items-center">
                   <Brain className="h-8 w-8 text-blue-600 mr-3" />
-                  Análisis Contable con IA
+                  AI Accounting Analysis
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Nuestro asistente de IA entiende contabilidad y finanzas. Haz preguntas complejas en lenguaje natural
-                  y obtén respuestas precisas basadas en tus datos reales.
+                  Our AI assistant understands accounting and finance. Ask complex questions in natural language
+                  and get accurate answers based on your real data.
                 </p>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                    <span>"¿Cuál fue mi margen de ganancia el mes pasado?"</span>
+                    <span>"What was my profit margin last month?"</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                    <span>"Muéstrame los gastos que más crecieron este año"</span>
+                    <span>"Show me the expenses that grew the most this year"</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                    <span>"¿Qué categorías puedo optimizar para ahorrar?"</span>
+                    <span>"What categories can I optimize to save money?"</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                    <span>"Proyecta mi flujo de caja para los próximos 3 meses"</span>
+                    <span>"Project my cash flow for the next 3 months"</span>
                   </li>
                 </ul>
                 <Link to="/register">
-                  <Button size="lg">Probar Chat IA Gratis</Button>
+                  <Button size="lg">Try AI Chat Free</Button>
                 </Link>
               </div>
               <div className="bg-gray-100 rounded-lg p-8">
                 <div className="bg-white rounded-lg shadow-lg p-6">
                   <div className="flex items-center space-x-3 mb-4">
                     <MessageSquare className="h-6 w-6 text-blue-600" />
-                    <span className="font-semibold">Chat con DataMindAI</span>
+                    <span className="font-semibold">Chat with DataMindAI</span>
                   </div>
                   <div className="space-y-4">
                     <div className="bg-blue-50 rounded-lg p-3">
                       <p className="text-sm">
-                        <strong>Tú:</strong> ¿Cuáles fueron mis gastos más altos en Q3?
+                        <strong>You:</strong> What were my highest expenses in Q3?
                       </p>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-sm">
-                        <strong>IA:</strong> Basándome en tu archivo "gastos_q3.xlsx", tus gastos más altos fueron:
+                        <strong>AI:</strong> Based on your "expenses_q3.xlsx" file, your highest expenses were:
                       </p>
                       <ul className="text-sm mt-2 space-y-1">
-                        <li>• Nómina: $45,230 (38%)</li>
+                        <li>• Payroll: $45,230 (38%)</li>
                         <li>• Marketing: $12,450 (10%)</li>
-                        <li>• Oficina: $8,900 (7%)</li>
+                        <li>• Office: $8,900 (7%)</li>
                       </ul>
-                      <p className="text-sm mt-2">¿Te gustaría que analice oportunidades de optimización?</p>
+                      <p className="text-sm mt-2">Would you like me to analyze optimization opportunities?</p>
                     </div>
                   </div>
                 </div>
@@ -118,27 +118,27 @@ export default function FeaturesPage() {
               <div className="bg-gray-100 rounded-lg p-8">
                 <div className="bg-white rounded-lg shadow-lg p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-semibold">Archivos Soportados</span>
+                    <span className="font-semibold">Supported Files</span>
                     <Upload className="h-5 w-5 text-green-600" />
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3 p-2 bg-green-50 rounded">
                       <FileSpreadsheet className="h-5 w-5 text-green-600" />
-                      <span className="text-sm">balance_general.xlsx</span>
+                      <span className="text-sm">balance_sheet.xlsx</span>
                       <Badge variant="outline" className="ml-auto">
                         ✓
                       </Badge>
                     </div>
                     <div className="flex items-center space-x-3 p-2 bg-green-50 rounded">
                       <FileSpreadsheet className="h-5 w-5 text-green-600" />
-                      <span className="text-sm">estado_resultados.csv</span>
+                      <span className="text-sm">income_statement.csv</span>
                       <Badge variant="outline" className="ml-auto">
                         ✓
                       </Badge>
                     </div>
                     <div className="flex items-center space-x-3 p-2 bg-green-50 rounded">
                       <FileSpreadsheet className="h-5 w-5 text-green-600" />
-                      <span className="text-sm">flujo_caja.xls</span>
+                      <span className="text-sm">cash_flow.xls</span>
                       <Badge variant="outline" className="ml-auto">
                         ✓
                       </Badge>
@@ -149,59 +149,58 @@ export default function FeaturesPage() {
               <div>
                 <h2 className="text-3xl font-bold mb-6 flex items-center">
                   <FileSpreadsheet className="h-8 w-8 text-green-600 mr-3" />
-                  Lectura y Escritura de Excel
+                  Excel Reading and Writing
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  DataMindAI entiende automáticamente la estructura de tus archivos Excel, identifica columnas, detecta
-                  patrones y puede generar nuevos archivos con análisis.
+                  DataMindAI automatically understands the structure of your Excel files, identifies columns, detects
+                  patterns and can generate new files with analysis.
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <Card>
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-lg">Lectura Inteligente</CardTitle>
+                      <CardTitle className="text-lg">Intelligent Reading</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm space-y-1">
-                        <li>• Auto-detección de headers</li>
-                        <li>• Reconoce fechas y monedas</li>
-                        <li>• Múltiples hojas de cálculo</li>
-                        <li>• Formatos complejos</li>
+                        <li>• Auto-header detection</li>
+                        <li>• Recognizes dates and currencies</li>
+                        <li>• Multiple worksheets</li>
+                        <li>• Complex formats</li>
                       </ul>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-lg">Escritura Avanzada</CardTitle>
+                      <CardTitle className="text-lg">Advanced Writing</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm space-y-1">
-                        <li>• Reportes automáticos</li>
-                        <li>• Gráficos integrados</li>
-                        <li>• Formato profesional</li>
-                        <li>• Fórmulas dinámicas</li>
+                        <li>• Automatic reports</li>
+                        <li>• Integrated charts</li>
+                        <li>• Professional formatting</li>
+                        <li>• Dynamic formulas</li>
                       </ul>
                     </CardContent>
                   </Card>
                 </div>
                 <Link to="/docs">
                   <Button variant="outline" size="lg">
-                    Ver Documentación
+                    View Documentation
                   </Button>
                 </Link>
               </div>
             </div>
           </TabsContent>
 
-          {/* Reportes */}
+          {/* Reports */}
           <TabsContent value="reports" className="space-y-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-6 flex items-center justify-center">
                 <BarChart3 className="h-8 w-8 text-purple-600 mr-3" />
-                Generación de Reportes Profesionales
+                Professional Report Generation
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Genera reportes financieros profesionales automáticamente. Desde estados financieros básicos hasta
-                análisis avanzados de tendencias.
+                Generate professional financial reports automatically. From basic financial statements to advanced trend analysis.
               </p>
             </div>
 
@@ -209,15 +208,15 @@ export default function FeaturesPage() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <PieChart className="h-8 w-8 text-blue-600 mb-2" />
-                  <CardTitle>Estado de Resultados</CardTitle>
-                  <CardDescription>P&L automático con análisis de variaciones</CardDescription>
+                  <CardTitle>Income Statement</CardTitle>
+                  <CardDescription>Automatic P&L with variance analysis</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="text-sm space-y-1">
-                    <li>• Ingresos por categoría</li>
-                    <li>• Gastos detallados</li>
-                    <li>• Márgenes y ratios</li>
-                    <li>• Comparativas período anterior</li>
+                    <li>• Income by category</li>
+                    <li>• Detailed expenses</li>
+                    <li>• Margins and ratios</li>
+                    <li>• Previous period comparison</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -225,15 +224,15 @@ export default function FeaturesPage() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <BarChart3 className="h-8 w-8 text-green-600 mb-2" />
-                  <CardTitle>Flujo de Caja</CardTitle>
-                  <CardDescription>Proyecciones y análisis de liquidez</CardDescription>
+                  <CardTitle>Cash Flow</CardTitle>
+                  <CardDescription>Projections and liquidity analysis</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="text-sm space-y-1">
-                    <li>• Flujo operativo</li>
-                    <li>• Flujo de inversión</li>
-                    <li>• Flujo de financiamiento</li>
-                    <li>• Proyecciones futuras</li>
+                    <li>• Operating flow</li>
+                    <li>• Investment flow</li>
+                    <li>• Financing flow</li>
+                    <li>• Future projections</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -241,102 +240,102 @@ export default function FeaturesPage() {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <Database className="h-8 w-8 text-purple-600 mb-2" />
-                  <CardTitle>Balance General</CardTitle>
-                  <CardDescription>Situación patrimonial completa</CardDescription>
+                  <CardTitle>Balance Sheet</CardTitle>
+                  <CardDescription>Complete financial position</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="text-sm space-y-1">
-                    <li>• Activos corrientes/no corrientes</li>
-                    <li>• Pasivos y patrimonio</li>
-                    <li>• Ratios de liquidez</li>
-                    <li>• Análisis vertical/horizontal</li>
+                    <li>• Current/non-current assets</li>
+                    <li>• Liabilities and equity</li>
+                    <li>• Liquidity ratios</li>
+                    <li>• Vertical/horizontal analysis</li>
                   </ul>
                 </CardContent>
               </Card>
             </div>
           </TabsContent>
 
-          {/* Seguridad */}
+          {/* Security */}
           <TabsContent value="security" className="space-y-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-6 flex items-center">
                   <Shield className="h-8 w-8 text-red-600 mr-3" />
-                  Seguridad y Privacidad de Datos
+                  Data Security and Privacy
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Tus datos financieros son extremadamente sensibles. DataMindAI está diseñado con seguridad y
-                  privacidad como prioridades absolutas.
+                  Your financial data is extremely sensitive. DataMindAI is designed with security and
+                  privacy as absolute priorities.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <Lock className="w-6 h-6 text-green-500 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold">Encriptación End-to-End</h4>
-                      <p className="text-gray-600 text-sm">Todos los datos se encriptan en tránsito y en reposo</p>
+                      <h4 className="font-semibold">End-to-End Encryption</h4>
+                      <p className="text-gray-600 text-sm">All data is encrypted in transit and at rest</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Server className="w-6 h-6 text-green-500 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold">Auto-hospedado</h4>
-                      <p className="text-gray-600 text-sm">Tus datos nunca salen de tu servidor</p>
+                      <h4 className="font-semibold">Self-Hosted</h4>
+                      <p className="text-gray-600 text-sm">Your data never leaves your server</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Code className="w-6 h-6 text-green-500 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold">Código Abierto</h4>
-                      <p className="text-gray-600 text-sm">Auditable y transparente</p>
+                      <h4 className="font-semibold">Open Source</h4>
+                      <p className="text-gray-600 text-sm">Auditable and transparent</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Database className="w-6 h-6 text-green-500 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold">Sin Vendor Lock-in</h4>
-                      <p className="text-gray-600 text-sm">Tus datos siempre son tuyos</p>
+                      <h4 className="font-semibold">No Vendor Lock-in</h4>
+                      <p className="text-gray-600 text-sm">Your data is always yours</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="bg-red-50 rounded-lg p-8 border border-red-200">
-                <h3 className="text-xl font-bold text-red-800 mb-4">🔒 Garantías de Seguridad</h3>
+                <h3 className="text-xl font-bold text-red-800 mb-4">🔒 Security Guarantees</h3>
                 <ul className="space-y-3 text-red-700">
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm">Certificación SOC 2 Type II</span>
+                    <span className="text-sm">SOC 2 Type II Certification</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm">Cumplimiento GDPR</span>
+                    <span className="text-sm">GDPR Compliance</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm">Auditorías de seguridad regulares</span>
+                    <span className="text-sm">Regular security audits</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm">Backups automáticos encriptados</span>
+                    <span className="text-sm">Encrypted automatic backups</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm">Autenticación de dos factores</span>
+                    <span className="text-sm">Two-factor authentication</span>
                   </li>
                 </ul>
               </div>
             </div>
           </TabsContent>
 
-          {/* Integraciones */}
+          {/* Integrations */}
           <TabsContent value="integrations" className="space-y-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-6 flex items-center justify-center">
                 <Zap className="h-8 w-8 text-orange-600 mr-3" />
-                Integraciones API Externas
+                External API Integrations
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                DataMindAI se integra con las mejores APIs de IA y servicios financieros para ofrecerte máxima
-                flexibilidad y potencia.
+                DataMindAI integrates with the best AI APIs and financial services to provide you with maximum
+                flexibility and power.
               </p>
             </div>
 
@@ -345,27 +344,27 @@ export default function FeaturesPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Brain className="h-6 w-6 text-blue-600 mr-2" />
-                    Modelos de IA
+                    AI Models
                   </CardTitle>
-                  <CardDescription>Elige el modelo que mejor se adapte a tus necesidades</CardDescription>
+                  <CardDescription>Choose the model that best fits your needs</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-3 border rounded-lg">
                       <h4 className="font-semibold text-sm">OpenAI GPT-4</h4>
-                      <p className="text-xs text-gray-600">Más potente y preciso</p>
+                      <p className="text-xs text-gray-600">Most powerful and accurate</p>
                     </div>
                     <div className="p-3 border rounded-lg">
                       <h4 className="font-semibold text-sm">Google Gemini</h4>
-                      <p className="text-xs text-gray-600">Excelente para análisis</p>
+                      <p className="text-xs text-gray-600">Excellent for analysis</p>
                     </div>
                     <div className="p-3 border rounded-lg">
                       <h4 className="font-semibold text-sm">Anthropic Claude</h4>
-                      <p className="text-xs text-gray-600">Muy seguro y ético</p>
+                      <p className="text-xs text-gray-600">Very secure and ethical</p>
                     </div>
                     <div className="p-3 border rounded-lg">
                       <h4 className="font-semibold text-sm">Ollama Local</h4>
-                      <p className="text-xs text-gray-600">100% privado</p>
+                      <p className="text-xs text-gray-600">100% private</p>
                     </div>
                   </div>
                 </CardContent>
@@ -375,14 +374,14 @@ export default function FeaturesPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Database className="h-6 w-6 text-green-600 mr-2" />
-                    Servicios Financieros
+                    Financial Services
                   </CardTitle>
-                  <CardDescription>Conecta con bancos y plataformas de pago</CardDescription>
+                  <CardDescription>Connect with banks and payment platforms</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-2 border rounded">
-                      <span className="text-sm font-medium">Plaid (Bancos)</span>
+                      <span className="text-sm font-medium">Plaid (Banks)</span>
                       <Badge variant="outline">API</Badge>
                     </div>
                     <div className="flex items-center justify-between p-2 border rounded">
@@ -403,16 +402,16 @@ export default function FeaturesPage() {
             </div>
           </TabsContent>
 
-          {/* Hospedaje */}
+          {/* Hosting */}
           <TabsContent value="hosting" className="space-y-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-6 flex items-center justify-center">
                 <Server className="h-8 w-8 text-indigo-600 mr-3" />
-                Auto Hospedaje vs Suscripción
+                Self-Hosting vs Subscription
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Elige la opción que mejor se adapte a tus necesidades: control total con auto-hospedaje o comodidad con
-                nuestro SaaS.
+                Choose the option that best fits your needs: total control with self-hosting or convenience with
+                our SaaS.
               </p>
             </div>
 
@@ -422,36 +421,36 @@ export default function FeaturesPage() {
                   <div className="flex items-center justify-between">
                     <CardTitle className="flex items-center">
                       <Server className="h-6 w-6 text-green-600 mr-2" />
-                      Auto-hospedado
+                      Self-Hosted
                     </CardTitle>
-                    <Badge className="bg-green-600">GRATIS</Badge>
+                    <Badge className="bg-green-600">FREE</Badge>
                   </div>
-                  <CardDescription>Control total sobre tus datos y infraestructura</CardDescription>
+                  <CardDescription>Total control over your data and infrastructure</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm">100% gratis para siempre</span>
+                      <span className="text-sm">100% free forever</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm">Datos en tu servidor</span>
+                      <span className="text-sm">Data on your server</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm">Personalización completa</span>
+                      <span className="text-sm">Complete customization</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm">Sin límites de uso</span>
+                      <span className="text-sm">No usage limits</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm">Instalación con Docker</span>
+                      <span className="text-sm">Docker installation</span>
                     </li>
                   </ul>
-                  <Button className="w-full bg-green-600 hover:bg-green-700">Descargar Gratis</Button>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">Download Free</Button>
                 </CardContent>
               </Card>
 
@@ -460,57 +459,57 @@ export default function FeaturesPage() {
                   <div className="flex items-center justify-between">
                     <CardTitle className="flex items-center">
                       <Cloud className="h-6 w-6 text-blue-600 mr-2" />
-                      SaaS Gestionado
+                      Managed SaaS
                     </CardTitle>
-                    <Badge className="bg-blue-600">$29/mes</Badge>
+                    <Badge className="bg-blue-600">$29/month</Badge>
                   </div>
-                  <CardDescription>Nosotros nos encargamos de todo por ti</CardDescription>
+                  <CardDescription>We take care of everything for you</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm">Sin configuración técnica</span>
+                      <span className="text-sm">No technical setup</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm">Actualizaciones automáticas</span>
+                      <span className="text-sm">Automatic updates</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm">Soporte técnico 24/7</span>
+                      <span className="text-sm">24/7 technical support</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm">APIs premium incluidas</span>
+                      <span className="text-sm">Premium APIs included</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm">Backups automáticos</span>
+                      <span className="text-sm">Automatic backups</span>
                     </li>
                   </ul>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">Comenzar Prueba</Button>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700">Start Trial</Button>
                 </CardContent>
               </Card>
             </div>
           </TabsContent>
         </Tabs>
 
-        {/* CTA Final */}
+        {/* Final CTA */}
         <div className="text-center bg-gray-50 rounded-lg p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">¿Listo para probar todas estas características?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to try all these features?</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Comienza gratis con auto-hospedaje o prueba nuestro SaaS sin compromiso.
+            Start free with self-hosting or try our SaaS without commitment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/register">
               <Button size="lg" className="px-8">
-                Comenzar Gratis
+                Start Free
               </Button>
             </Link>
             <Link to="/pricing">
               <Button variant="outline" size="lg" className="px-8">
-                Ver Precios
+                View Pricing
               </Button>
             </Link>
           </div>

@@ -27,19 +27,18 @@ import {
 export default function DocsPage() {
   return (
     <div className="min-h-screen py-12">
-      <div className="container mx-auto px-4">
+      <div className="w-screen px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4" variant="outline">
-            Documentación Completa
+            Complete Documentation
           </Badge>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Documentación de
-            <span className="text-blue-600 block">DataMindAI</span>
+            DataMindAI
+            <span className="text-blue-600 block">Documentation</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Todo lo que necesitas saber para instalar, configurar y usar DataMindAI. Desde la instalación básica hasta
-            configuraciones avanzadas.
+          <p className="text-xl text-gray-600 text-center">
+            Everything you need to know to install, configure and use DataMindAI. From basic installation to advanced configurations.
           </p>
         </div>
 
@@ -48,23 +47,23 @@ export default function DocsPage() {
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader className="text-center">
               <Container className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <CardTitle>Instalación Rápida</CardTitle>
-              <CardDescription>Ejecuta DataMindAI en 5 minutos con Docker</CardDescription>
+              <CardTitle>Quick Installation</CardTitle>
+              <CardDescription>Run DataMindAI in 5 minutes with Docker</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button className="w-full">Comenzar Instalación</Button>
+              <Button className="w-full">Start Installation</Button>
             </CardContent>
           </Card>
 
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader className="text-center">
               <Play className="h-12 w-12 text-green-600 mx-auto mb-4" />
-              <CardTitle>Guía de Uso</CardTitle>
-              <CardDescription>Aprende a usar todas las características</CardDescription>
+              <CardTitle>Usage Guide</CardTitle>
+              <CardDescription>Learn to use all the features</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
               <Button variant="outline" className="w-full">
-                Ver Tutorial
+                View Tutorial
               </Button>
             </CardContent>
           </Card>
@@ -73,11 +72,11 @@ export default function DocsPage() {
             <CardHeader className="text-center">
               <Code className="h-12 w-12 text-purple-600 mx-auto mb-4" />
               <CardTitle>API Reference</CardTitle>
-              <CardDescription>Documentación completa de la API REST</CardDescription>
+              <CardDescription>Complete REST API documentation</CardDescription>
             </CardHeader>
             <CardContent className="text-center">
               <Button variant="outline" className="w-full">
-                Ver API Docs
+                View API Documentation
               </Button>
             </CardContent>
           </Card>
@@ -86,53 +85,52 @@ export default function DocsPage() {
         {/* Main Documentation Tabs */}
         <Tabs defaultValue="installation" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
-            <TabsTrigger value="installation">Instalación</TabsTrigger>
-            <TabsTrigger value="usage">Uso</TabsTrigger>
-            <TabsTrigger value="deployment">Despliegue</TabsTrigger>
+            <TabsTrigger value="installation">Installation</TabsTrigger>
+            <TabsTrigger value="usage">Usage</TabsTrigger>
+            <TabsTrigger value="deployment">Deployment</TabsTrigger>
             <TabsTrigger value="api">API</TabsTrigger>
             <TabsTrigger value="faq">FAQ</TabsTrigger>
           </TabsList>
 
-          {/* Instalación */}
+          {/* Installation */}
           <TabsContent value="installation" className="space-y-8">
             <div className="prose max-w-none">
               <h2 className="text-3xl font-bold mb-6 flex items-center">
                 <Container className="h-8 w-8 text-blue-600 mr-3" />
-                Instalación con Docker
+                Installation with Docker
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                La forma más rápida de ejecutar DataMindAI es usando Docker. Solo necesitas tener Docker instalado en tu
-                sistema.
+                The fastest way to run DataMindAI is using Docker. You just need to have Docker installed on your system.
               </p>
             </div>
 
-            {/* Requisitos del Sistema */}
+            {/* System Requirements */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Server className="h-6 w-6 text-green-600 mr-2" />
-                  Requisitos del Sistema
+                  System Requirements
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Mínimos</h4>
+                    <h4 className="font-semibold mb-3">Minimum</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li>• CPU: 2 cores</li>
                       <li>• RAM: 4GB</li>
-                      <li>• Almacenamiento: 10GB</li>
+                      <li>• Storage: 10GB</li>
                       <li>• Docker 20.10+</li>
                       <li>• Docker Compose 2.0+</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-3">Recomendados</h4>
+                    <h4 className="font-semibold mb-3">Recommended</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li>• CPU: 4+ cores</li>
                       <li>• RAM: 8GB+</li>
-                      <li>• Almacenamiento: 50GB+ SSD</li>
-                      <li>• GPU (opcional para Ollama)</li>
+                      <li>• Storage: 50GB+ SSD</li>
+                      <li>• GPU (optional for Ollama)</li>
                       <li>• Ubuntu 20.04+ / macOS / Windows</li>
                     </ul>
                   </div>
@@ -140,23 +138,23 @@ export default function DocsPage() {
               </CardContent>
             </Card>
 
-            {/* Instalación Paso a Paso */}
+            {/* Step by Step Installation */}
             <Card>
               <CardHeader>
-                <CardTitle>Instalación Paso a Paso</CardTitle>
-                <CardDescription>Sigue estos pasos para tener DataMindAI funcionando en minutos</CardDescription>
+                <CardTitle>Installation Step-by-Step</CardTitle>
+                <CardDescription>Follow these steps to get DataMindAI up and running in minutes</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-blue-600 font-bold text-sm">1</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-2">Clona el repositorio</h4>
+                      <h4 className="font-semibold mb-2">Clone the repository</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div className="flex items-center justify-between">
-                          <code>git clone https://github.com/datamindai/datamindai.git</code>
+                          <code>git clone https://github.com/EssEnemiGz/datamindai.git</code>
                           <Button size="sm" variant="ghost">
                             <Copy className="h-4 w-4" />
                           </Button>
@@ -170,7 +168,7 @@ export default function DocsPage() {
                       <span className="text-blue-600 font-bold text-sm">2</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-2">Navega al directorio</h4>
+                      <h4 className="font-semibold mb-2">Navigate to the directory</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div className="flex items-center justify-between">
                           <code>cd datamindai</code>
@@ -187,7 +185,7 @@ export default function DocsPage() {
                       <span className="text-blue-600 font-bold text-sm">3</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-2">Copia el archivo de configuración</h4>
+                      <h4 className="font-semibold mb-2">Copy the configuration file</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div className="flex items-center justify-between">
                           <code>cp .env.example .env</code>
@@ -204,11 +202,15 @@ export default function DocsPage() {
                       <span className="text-blue-600 font-bold text-sm">4</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-2">Configura las variables de entorno</h4>
+                      <h4 className="font-semibold mb-2">Configure environment variables</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm space-y-1">
-                        <div>OPENAI_API_KEY=tu_clave_openai</div>
-                        <div>GEMINI_API_KEY=tu_clave_gemini</div>
-                        <div>DATABASE_URL=postgresql://...</div>
+                        <div>OPENAI_API_KEY=your_openai_key</div>
+                        <div>GEMINI_API_KEY=your_gemini_key</div>
+                        <div>OLLAMA_URL=ollama_url</div>
+                        <div>ANTHROPIC_API=your_anthropic_key</div>
+                        <div>CORS_ORIGINS=http://localhost:3000</div>
+                        <div>POSTGRES_USER=root</div>
+                        <div>POSTGRES_PASSWORD=your_password</div>
                       </div>
                     </div>
                   </div>
@@ -218,7 +220,7 @@ export default function DocsPage() {
                       <span className="text-green-600 font-bold text-sm">5</span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-2">Ejecuta DataMindAI</h4>
+                      <h4 className="font-semibold mb-2">Run DataMindAI</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div className="flex items-center justify-between">
                           <code>docker-compose up -d</code>
@@ -228,7 +230,7 @@ export default function DocsPage() {
                         </div>
                       </div>
                       <p className="text-sm text-gray-600 mt-2">
-                        ¡Listo! DataMindAI estará disponible en{" "}
+                        Done! DataMindAI will be available at{" "}
                         <code className="bg-gray-100 px-1 rounded">http://localhost:3000</code>
                       </p>
                     </div>
@@ -237,26 +239,26 @@ export default function DocsPage() {
               </CardContent>
             </Card>
 
-            {/* Instalación con Ollama */}
+            {/* Ollama Installation */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Zap className="h-6 w-6 text-orange-600 mr-2" />
-                  Instalación con Ollama (Local)
+                  Ollama Installation (Local)
                 </CardTitle>
-                <CardDescription>Para usar IA completamente local sin APIs externas</CardDescription>
+                <CardDescription>For using completely local AI without external APIs</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <p className="text-gray-600">
-                    Si prefieres no usar APIs externas, puedes ejecutar modelos de IA localmente con Ollama:
+                    If you prefer not to use external APIs, you can run AI models locally with Ollama:
                   </p>
                   <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm space-y-2">
-                    <div># Instala Ollama</div>
+                    <div># Install Ollama</div>
                     <div>curl -fsSL https://ollama.ai/install.sh | sh</div>
-                    <div className="mt-2"># Descarga un modelo</div>
+                    <div className="mt-2"># Download a model</div>
                     <div>ollama pull llama2</div>
-                    <div className="mt-2"># Configura DataMindAI para usar Ollama</div>
+                    <div className="mt-2"># Configure DataMindAI to use Ollama</div>
                     <div>OLLAMA_BASE_URL=http://localhost:11434</div>
                     <div>AI_MODEL=ollama/llama2</div>
                   </div>
@@ -270,109 +272,109 @@ export default function DocsPage() {
             <div className="prose max-w-none">
               <h2 className="text-3xl font-bold mb-6 flex items-center">
                 <Play className="h-8 w-8 text-green-600 mr-3" />
-                Cómo Usar DataMindAI
+                How to Use DataMindAI
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Guía completa para aprovechar al máximo todas las características de DataMindAI.
+                Complete guide to get the most out of all DataMindAI features.
               </p>
             </div>
 
             {/* Subida de Archivos */}
             <Card>
               <CardHeader>
-                <CardTitle>1. Subir Archivos Contables</CardTitle>
-                <CardDescription>Formatos soportados y mejores prácticas</CardDescription>
+                <CardTitle>1. Upload Accounting Files</CardTitle>
+                <CardDescription>Supported formats and best practices</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid lg:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Formatos Soportados</h4>
+                    <h4 className="font-semibold mb-3">Supported Formats</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li>
                         • <strong>Excel:</strong> .xlsx, .xls
                       </li>
                       <li>
-                        • <strong>CSV:</strong> .csv (UTF-8, separado por comas)
+                        • <strong>CSV:</strong> .csv (UTF-8, comma-separated)
                       </li>
                       <li>
-                        • <strong>PDF:</strong> .pdf (próximamente)
+                        • <strong>PDF:</strong> .pdf (coming soon)
                       </li>
                       <li>
-                        • <strong>Tamaño máximo:</strong> 50MB por archivo
+                        • <strong>Maximum Size:</strong> 50MB per file
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-3">Mejores Prácticas</h4>
+                    <h4 className="font-semibold mb-3">Best Practices</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Usa headers claros en la primera fila</li>
-                      <li>• Incluye fechas en formato YYYY-MM-DD</li>
-                      <li>• Separa ingresos y gastos en columnas</li>
-                      <li>• Evita celdas combinadas</li>
+                      <li>• Use clear headers in the first row</li>
+                      <li>• Include dates in YYYY-MM-DD format</li>
+                      <li>• Separate incomes and expenses in columns</li>
+                      <li>• Avoid merged cells</li>
                     </ul>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Chat con IA */}
+            {/* Chat with IA */}
             <Card>
               <CardHeader>
-                <CardTitle>2. Chat con el Asistente IA</CardTitle>
-                <CardDescription>Ejemplos de preguntas que puedes hacer</CardDescription>
+                <CardTitle>2. Chat with the IA Assistant</CardTitle>
+                <CardDescription>Examples of questions you can ask</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="bg-blue-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-blue-900 mb-2">Análisis Básico</h4>
+                    <h4 className="font-semibold text-blue-900 mb-2">Basic Analysis</h4>
                     <ul className="space-y-1 text-sm text-blue-800">
-                      <li>• "¿Cuál fue mi ganancia neta el mes pasado?"</li>
-                      <li>• "Muéstrame mis gastos más altos"</li>
-                      <li>• "¿Cómo se compara este trimestre con el anterior?"</li>
+                      <li>• "What was my net income last month?"</li>
+                      <li>• "Show me my highest expenses"</li>
+                      <li>• "How does this quarter compare to the previous one?"</li>
                     </ul>
                   </div>
                   <div className="bg-green-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-green-900 mb-2">Análisis Avanzado</h4>
+                    <h4 className="font-semibold text-green-900 mb-2">Advanced Analysis</h4>
                     <ul className="space-y-1 text-sm text-green-800">
-                      <li>• "Identifica patrones estacionales en mis ventas"</li>
-                      <li>• "¿Qué categorías de gastos puedo optimizar?"</li>
-                      <li>• "Proyecta mi flujo de caja para los próximos 3 meses"</li>
+                      <li>• "Identify seasonal patterns in my sales"</li>
+                      <li>• "What categories of expenses can I optimize?"</li>
+                      <li>• "Project my cash flow for the next 3 months"</li>
                     </ul>
                   </div>
                   <div className="bg-purple-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-purple-900 mb-2">Reportes</h4>
+                    <h4 className="font-semibold text-purple-900 mb-2">Reports</h4>
                     <ul className="space-y-1 text-sm text-purple-800">
-                      <li>• "Genera un reporte de P&L para este año"</li>
-                      <li>• "Crea un análisis de flujo de caja mensual"</li>
-                      <li>• "Exporta un resumen ejecutivo en Excel"</li>
+                      <li>• "Generate a P&L report for this year"</li>
+                      <li>• "Create a monthly cash flow analysis"</li>
+                      <li>• "Export an executive summary in Excel"</li>
                     </ul>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Generación de Reportes */}
+            {/* Report Generation */}
             <Card>
               <CardHeader>
-                <CardTitle>3. Generación de Reportes</CardTitle>
-                <CardDescription>Tipos de reportes disponibles y cómo generarlos</CardDescription>
+                <CardTitle>3. Report Generation</CardTitle>
+                <CardDescription>Types of reports available and how to generate them</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="border rounded-lg p-4">
                     <FileText className="h-8 w-8 text-blue-600 mb-3" />
-                    <h4 className="font-semibold mb-2">Estado de Resultados</h4>
-                    <p className="text-sm text-gray-600">P&L detallado con comparativas período anterior</p>
+                    <h4 className="font-semibold mb-2">Income Statement</h4>
+                    <p className="text-sm text-gray-600">Detailed P&L with period comparison</p>
                   </div>
                   <div className="border rounded-lg p-4">
                     <Database className="h-8 w-8 text-green-600 mb-3" />
-                    <h4 className="font-semibold mb-2">Balance General</h4>
-                    <p className="text-sm text-gray-600">Situación patrimonial completa con ratios</p>
+                    <h4 className="font-semibold mb-2">Balance Sheet</h4>
+                    <p className="text-sm text-gray-600">Complete balance sheet with ratios</p>
                   </div>
                   <div className="border rounded-lg p-4">
                     <Zap className="h-8 w-8 text-purple-600 mb-3" />
-                    <h4 className="font-semibold mb-2">Flujo de Caja</h4>
-                    <p className="text-sm text-gray-600">Análisis de liquidez y proyecciones</p>
+                    <h4 className="font-semibold mb-2">Cash Flow</h4>
+                    <p className="text-sm text-gray-600">Liquidity analysis and projections</p>
                   </div>
                 </div>
               </CardContent>
@@ -382,66 +384,57 @@ export default function DocsPage() {
           {/* Despliegue */}
           <TabsContent value="deployment" className="space-y-8">
             <div className="prose max-w-none">
-              <h2 className="text-3xl font-bold mb-6 flex items-center">
-                <Server className="h-8 w-8 text-purple-600 mr-3" />
-                Guía de Despliegue
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Opciones para desplegar DataMindAI en producción de forma segura y escalable.
-              </p>
+              <h2 className="text-3xl font-bold mb-6 flex items-center">Deployment Guide</h2>
+              <p className="text-lg text-gray-600 mb-8">Options to deploy DataMindAI in production securely and at scale.</p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg">VPS/Servidor Dedicado</CardTitle>
-                  <CardDescription>Para control total y máxima privacidad</CardDescription>
+                  <CardDescription>For full control and maximum privacy</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-sm text-gray-600 mb-4">
-                    <li>• Ubuntu 20.04+ recomendado</li>
-                    <li>• Nginx como reverse proxy</li>
-                    <li>• SSL con Let's Encrypt</li>
-                    <li>• Backups automáticos</li>
+                    <li>• Ubuntu 20.04+ recommended</li>
+                    <li>• Nginx as reverse proxy</li>
+                    <li>• SSL with Let's Encrypt</li>
+                    <li>• Automatic backups</li>
                   </ul>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ver Guía Completa
-                  </Button>
+                  <Button variant="outline" size="sm" className="w-full">View Full Guide</Button>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg">Docker Swarm</CardTitle>
-                  <CardDescription>Para alta disponibilidad y escalabilidad</CardDescription>
+                  <CardDescription>For high availability and scalability</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-sm text-gray-600 mb-4">
-                    <li>• Múltiples nodos</li>
-                    <li>• Load balancing automático</li>
+                    <li>• Multiple nodes</li>
+                    <li>• Automatic load balancing</li>
                     <li>• Rolling updates</li>
                     <li>• Health checks</li>
                   </ul>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Ver Configuración
-                  </Button>
+                  <Button variant="outline" size="sm" className="w-full">View Configuration</Button>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg">Kubernetes</CardTitle>
-                  <CardDescription>Para empresas con infraestructura compleja</CardDescription>
+                  <CardDescription>For companies with complex infrastructure</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-sm text-gray-600 mb-4">
-                    <li>• Helm charts incluidos</li>
+                    <li>• Helm charts included</li>
                     <li>• Auto-scaling</li>
-                    <li>• Monitoring integrado</li>
+                    <li>• Monitoring integrated</li>
                     <li>• Multi-tenant</li>
                   </ul>
                   <Button variant="outline" size="sm" className="w-full">
-                    Descargar Charts
+                    Download Charts
                   </Button>
                 </CardContent>
               </Card>
@@ -450,32 +443,29 @@ export default function DocsPage() {
             {/* Configuración de Seguridad */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Shield className="h-6 w-6 text-red-600 mr-2" />
-                  Configuración de Seguridad
-                </CardTitle>
-                <CardDescription>Mejores prácticas para un despliegue seguro</CardDescription>
+                <CardTitle className="flex items-center">Security Configuration</CardTitle>
+                <CardDescription>Best practices for a secure deployment</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Configuración Básica</h4>
+                    <h4 className="font-semibold mb-3">Basic Configuration</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Cambiar contraseñas por defecto</li>
-                      <li>• Configurar firewall (UFW)</li>
-                      <li>• Deshabilitar root SSH</li>
-                      <li>• Usar claves SSH</li>
-                      <li>• Configurar fail2ban</li>
+                      <li>• Change default passwords</li>
+                      <li>• Configure firewall (UFW)</li>
+                      <li>• Disable root SSH</li>
+                      <li>• Use SSH keys</li>
+                      <li>• Configure fail2ban</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-3">Configuración Avanzada</h4>
+                    <h4 className="font-semibold mb-3">Advanced Configuration</h4>
                     <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Encriptación de base de datos</li>
-                      <li>• VPN para acceso remoto</li>
-                      <li>• Auditoría de logs</li>
-                      <li>• Monitoreo de intrusiones</li>
-                      <li>• Backups encriptados</li>
+                      <li>• Database encryption</li>
+                      <li>• VPN for remote access</li>
+                      <li>• Log auditing</li>
+                      <li>• Intrusion monitoring</li>
+                      <li>• Encrypted backups</li>
                     </ul>
                   </div>
                 </div>
@@ -486,28 +476,21 @@ export default function DocsPage() {
           {/* API */}
           <TabsContent value="api" className="space-y-8">
             <div className="prose max-w-none">
-              <h2 className="text-3xl font-bold mb-6 flex items-center">
-                <Code className="h-8 w-8 text-orange-600 mr-3" />
-                API Reference
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Documentación completa de la API REST de DataMindAI para integraciones personalizadas.
-              </p>
+              <h2 className="text-3xl font-bold mb-6 flex items-center">Referencia de API</h2>
+              <p className="text-lg text-gray-600 mb-8">Complete REST API documentation for custom integrations with DataMindAI.</p>
             </div>
 
             {/* Autenticación */}
             <Card>
               <CardHeader>
-                <CardTitle>Autenticación</CardTitle>
-                <CardDescription>Cómo autenticarte con la API</CardDescription>
+                <CardTitle>Authentication</CardTitle>
+                <CardDescription>How to authenticate with the API</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <p className="text-gray-600">
-                    DataMindAI usa API Keys para autenticación. Puedes generar una clave en tu panel de usuario.
-                  </p>
+                  <p className="text-gray-600">DataMindAI uses API Keys for authentication. You can generate a key in your user panel.</p>
                   <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
-                    <div className="text-gray-500 mb-2"># Ejemplo de autenticación</div>
+                    <div className="text-gray-500 mb-2"># Authentication example</div>
                     <div>curl -H "Authorization: Bearer YOUR_API_KEY" \</div>
                     <div className="ml-4">https://your-domain.com/api/v1/analyze</div>
                   </div>
@@ -523,12 +506,12 @@ export default function DocsPage() {
                     <span>POST /api/v1/upload</span>
                     <Badge className="bg-green-100 text-green-800">POST</Badge>
                   </CardTitle>
-                  <CardDescription>Subir archivos para análisis</CardDescription>
+                  <CardDescription>Upload files for analysis</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold mb-2">Parámetros</h4>
+                      <h4 className="font-semibold mb-2">Parameters</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div>file: multipart/form-data (required)</div>
                         <div>name: string (optional)</div>
@@ -536,7 +519,7 @@ export default function DocsPage() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-2">Respuesta</h4>
+                      <h4 className="font-semibold mb-2">Response</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div>{"{"}</div>
                         <div className="ml-2">"id": "file_123",</div>
@@ -556,7 +539,7 @@ export default function DocsPage() {
                     <span>POST /api/v1/chat</span>
                     <Badge className="bg-blue-100 text-blue-800">POST</Badge>
                   </CardTitle>
-                  <CardDescription>Enviar mensajes al asistente IA</CardDescription>
+                  <CardDescription>Send messages to the IA assistant</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -564,7 +547,7 @@ export default function DocsPage() {
                       <h4 className="font-semibold mb-2">Body</h4>
                       <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                         <div>{"{"}</div>
-                        <div className="ml-2">"message": "¿Cuál fue mi ganancia neta?",</div>
+                        <div className="ml-2">"message": "What was my net income?",</div>
                         <div className="ml-2">"file_ids": ["file_123"],</div>
                         <div className="ml-2">"context": "financial_analysis"</div>
                         <div>{"}"}</div>
@@ -580,7 +563,7 @@ export default function DocsPage() {
                     <span>GET /api/v1/reports</span>
                     <Badge className="bg-purple-100 text-purple-800">GET</Badge>
                   </CardTitle>
-                  <CardDescription>Listar reportes generados</CardDescription>
+                  <CardDescription>List generated reports</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -601,7 +584,7 @@ export default function DocsPage() {
             <Card>
               <CardHeader>
                 <CardTitle>SDKs Oficiales</CardTitle>
-                <CardDescription>Librerías para diferentes lenguajes de programación</CardDescription>
+                <CardDescription>Libraries for different programming languages</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-3 gap-4">
@@ -610,7 +593,7 @@ export default function DocsPage() {
                     <div className="bg-gray-100 rounded p-2 font-mono text-xs mb-3">npm install datamind-sdk</div>
                     <Button size="sm" variant="outline">
                       <ExternalLink className="h-4 w-4 mr-1" />
-                      Docs
+                      Documentation
                     </Button>
                   </div>
                   <div className="border rounded-lg p-4 text-center">
@@ -618,7 +601,7 @@ export default function DocsPage() {
                     <div className="bg-gray-100 rounded p-2 font-mono text-xs mb-3">pip install datamind-python</div>
                     <Button size="sm" variant="outline">
                       <ExternalLink className="h-4 w-4 mr-1" />
-                      Docs
+                      Documentation
                     </Button>
                   </div>
                   <div className="border rounded-lg p-4 text-center">
@@ -626,7 +609,7 @@ export default function DocsPage() {
                     <div className="bg-gray-100 rounded p-2 font-mono text-xs mb-3">go get datamind-go</div>
                     <Button size="sm" variant="outline">
                       <ExternalLink className="h-4 w-4 mr-1" />
-                      Docs
+                      Documentation
                     </Button>
                   </div>
                 </div>
@@ -637,84 +620,64 @@ export default function DocsPage() {
           {/* FAQ Técnica */}
           <TabsContent value="faq" className="space-y-8">
             <div className="prose max-w-none">
-              <h2 className="text-3xl font-bold mb-6 flex items-center">
-                <HelpCircle className="h-8 w-8 text-red-600 mr-3" />
-                FAQ Técnica
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Respuestas a las preguntas técnicas más frecuentes sobre DataMindAI.
-              </p>
+              <h2 className="text-3xl font-bold mb-6 flex items-center">Technical FAQ</h2>
+              <p className="text-lg text-gray-600 mb-8">Answers to the most frequently asked technical questions about DataMindAI.</p>
             </div>
 
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Cómo actualizo DataMindAI a la última versión?</CardTitle>
+                  <CardTitle>How do I update DataMindAI to the latest version?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <p className="text-gray-600">Para actualizar usando Docker:</p>
+                    <p className="text-gray-600">To update using Docker:</p>
                     <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
                       <div>docker-compose pull</div>
                       <div>docker-compose up -d</div>
                     </div>
-                    <p className="text-sm text-gray-500">
-                      Esto descargará las últimas imágenes y reiniciará los contenedores automáticamente.
-                    </p>
+                    <p className="text-sm text-gray-500">This will download the latest images and restart containers automatically.</p>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Puedo usar múltiples modelos de IA simultáneamente?</CardTitle>
+                  <CardTitle>Can I use multiple AI models simultaneously?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Sí, puedes configurar múltiples proveedores de IA y elegir cuál usar para cada consulta. Por
-                    ejemplo, usar GPT-4 para análisis complejos y Llama2 local para consultas básicas.
-                  </p>
+                  <p className="text-gray-600">Yes, you can configure multiple AI providers and choose which one to use for each query. For example, use GPT-4 for complex analysis and Llama2 local for basic queries.</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Cómo configuro backups automáticos?</CardTitle>
+                  <CardTitle>How do I configure automatic backups?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <p className="text-gray-600">Puedes configurar backups automáticos con cron:</p>
+                    <p className="text-gray-600">You can configure automatic backups with cron:</p>
                     <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
-                      <div># Backup diario a las 2 AM</div>
+                      <div># Daily backup at 2 AM</div>
                       <div>0 2 * * * /path/to/backup-script.sh</div>
                     </div>
-                    <p className="text-sm text-gray-500">
-                      El script de backup está incluido en el repositorio en <code>/scripts/backup.sh</code>
-                    </p>
+                    <p className="text-sm text-gray-500">The backup script is included in the repository at <code>/scripts/backup.sh</code></p>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Qué puertos necesito abrir en mi firewall?</CardTitle>
+                  <CardTitle>What ports do I need to open in my firewall?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <p className="text-gray-600">Puertos necesarios:</p>
+                    <p className="text-gray-600">Required ports:</p>
                     <ul className="space-y-2 text-sm text-gray-600">
-                      <li>
-                        • <strong>80/443:</strong> HTTP/HTTPS para la aplicación web
-                      </li>
-                      <li>
-                        • <strong>5432:</strong> PostgreSQL (solo si usas base de datos externa)
-                      </li>
-                      <li>
-                        • <strong>11434:</strong> Ollama (solo si usas IA local)
-                      </li>
-                      <li>
-                        • <strong>22:</strong> SSH para administración
-                      </li>
+                      <li>• <strong>80/443:</strong> HTTP/HTTPS for the web application</li>
+                      <li>• <strong>5432:</strong> PostgreSQL (only if using external database)</li>
+                      <li>• <strong>11434:</strong> Ollama (only if using local AI)</li>
+                      <li>• <strong>22:</strong> SSH for administration</li>
                     </ul>
                   </div>
                 </CardContent>
@@ -722,26 +685,19 @@ export default function DocsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Cómo migro mis datos de otra herramienta contable?</CardTitle>
+                  <CardTitle>How do I migrate my data from another accounting tool?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    DataMindAI incluye importadores para QuickBooks, Xero, y archivos CSV genéricos. También puedes usar
-                    nuestra API para importar datos programáticamente. Consulta la sección "Migración de Datos" en la
-                    documentación completa.
-                  </p>
+                  <p className="text-gray-600">DataMindAI includes importers for QuickBooks, Xero, and generic CSV files. You can also use our API to import data programmatically. See the "Data Migration" section in the full documentation.</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>¿Puedo personalizar la interfaz de usuario?</CardTitle>
+                  <CardTitle>Can I customize the user interface?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Sí, al ser open source puedes modificar completamente la interfaz. También ofrecemos temas
-                    personalizables y la opción de white-labeling para clientes Enterprise.
-                  </p>
+                  <p className="text-gray-600">Yes, as open source you can fully modify the interface. We also offer customizable themes and white-labeling for Enterprise clients.</p>
                 </CardContent>
               </Card>
             </div>
@@ -750,29 +706,23 @@ export default function DocsPage() {
 
         {/* CTA Final */}
         <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-12 text-white mt-16">
-          <h2 className="text-3xl font-bold mb-4">¿Necesitas ayuda adicional?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Nuestro equipo y comunidad están aquí para ayudarte con cualquier pregunta técnica.
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Need additional help?</h2>
+          <p className="text-xl mb-8 opacity-90">Our team and community are here to help you with any technical questions.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/community">
-              <Button size="lg" variant="secondary" className="px-8">
-                Únete a Discord
-              </Button>
+              <Button size="lg" variant="secondary" className="px-8">Join Discord</Button>
             </Link>
             <Link to="/support">
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 border-white text-white hover:bg-white hover:text-blue-600"
+                className="px-8 border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
               >
-                Contactar Soporte
+                Contact Support
               </Button>
             </Link>
           </div>
-          <p className="text-sm mt-6 opacity-75">
-            📚 Docs actualizadas semanalmente • 💬 Respuesta promedio: 2 horas • 🎥 Video tutoriales
-          </p>
+          <p className="text-sm mt-6 opacity-75">📚 Docs updated weekly • 💬 Average response time: 2 hours • 🎥 Video tutorials</p>
         </div>
       </div>
     </div>

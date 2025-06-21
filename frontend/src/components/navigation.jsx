@@ -10,13 +10,13 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navigation = [
-    { name: "Inicio", to: "/" },
-    { name: "Características", to: "/features" },
-    { name: "Precios", to: "/pricing" },
-    { name: "Documentación", to: "/docs" },
-    { name: "Acerca de", to: "/about" },
+    { name: "Home", to: "/" },
+    { name: "Features", to: "/features" },
+    { name: "Documentation", to: "/docs" },
+    { name: "About", to: "/about" },
+    { name: "Pricing", to: "/pricing" },
   ]
-
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container-narrow">
@@ -45,12 +45,12 @@ export function Navigation() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="ghost" size="sm">
-                Iniciar Sesión
+              <Button variant="outline" size="sm">
+                Sign In
               </Button>
             </Link>
             <Link to="/register">
-              <Button size="sm">Registrarse</Button>
+              <Button size="sm">Sign Up</Button>
             </Link>
           </div>
 
@@ -82,8 +82,8 @@ export function Navigation() {
             )}
             <div className="flex flex-col space-y-2 pt-4 border-t">
               <Link to="/login" onClick={() => setIsOpen(false)}>
-                <Button variant="ghost" size="sm" className="w-full justify-start">
-                  Iniciar Sesión
+                <Button variant="outline" size="sm" className="w-full justify-start">
+                  Sign In
                 </Button>
               </Link>
               <Link to="/register" onClick={() => setIsOpen(false)}>

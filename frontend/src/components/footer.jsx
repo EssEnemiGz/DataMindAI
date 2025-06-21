@@ -13,38 +13,38 @@ export function Footer() {
               <span className="text-xl font-bold">DataMindAI</span>
             </Link>
             <p className="text-gray-400 text-sm">
-              Asistente de IA open-source para análisis de datos financieros y contabilidad.
+              Open-source AI assistant for financial data analysis and accounting.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/EssEnemiGz" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="https://twitter.com" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
+              <a href="https://twitter.com/@EssEnemiGz" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/biscen-fabian-pichardo-rosado-207b3336a" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Producto */}
+          {/* Product */}
           <div>
-            <h4 className="font-semibold mb-4">Producto</h4>
+            <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link to="/features" className="hover:text-white">
-                  Características
+                  Features
                 </Link>
               </li>
               <li>
                 <Link to="/pricing" className="hover:text-white">
-                  Precios
+                  Pricing
                 </Link>
               </li>
               <li>
                 <Link to="/docs" className="hover:text-white">
-                  Documentación
+                  Documentation
                 </Link>
               </li>
               <li>
@@ -55,23 +55,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Comunidad */}
+          {/* Community */}
           <div>
-            <h4 className="font-semibold mb-4">Comunidad</h4>
+            <h4 className="font-semibold mb-4">Community</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link to="/community" className="hover:text-white">
-                  Comunidad
+                  Community
                 </Link>
               </li>
               <li>
                 <Link to="/contribute" className="hover:text-white">
-                  Contribuir
+                  Contribute
                 </Link>
               </li>
               <li>
                 <Link to="/support" className="hover:text-white">
-                  Soporte
+                  Support
                 </Link>
               </li>
               <li>
@@ -82,28 +82,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Empresa */}
+          {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Empresa</h4>
+            <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link to="/about" className="hover:text-white">
-                  Acerca de
+                  About
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-white">
-                  Contacto
+                  Contact
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="hover:text-white">
-                  Privacidad
+                  Privacy
                 </Link>
               </li>
               <li>
                 <Link to="/terms" className="hover:text-white">
-                  Términos
+                  Terms
                 </Link>
               </li>
             </ul>
@@ -111,7 +111,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2024 DataMindAI. Todos los derechos reservados.</p>
+          <p>&copy; 2025 DataMindAI. All rights reserved.</p>
         </div>
       </div>
     </footer>

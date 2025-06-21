@@ -7,14 +7,13 @@ import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
-import { Checkbox } from "../../components/ui/checkbox"
-import { Separator } from "../../components/ui/separator"
-import { Brain, Github, Mail, Eye, EyeOff, CheckCircle, AlertCircle } from "lucide-react"
+import { Github, Mail, Eye, EyeOff, CheckCircle, User, Building } from "lucide-react"
 import { Link } from "react-router-dom"
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [accountType, setAccountType] = useState("personal")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,41 +29,41 @@ export default function RegisterPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Validación básica
+    // Basic validation
     const newErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = "El nombre es requerido"
+      newErrors.name = "Name is required"
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "El email es requerido"
+      newErrors.email = "Email is required"
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email inválido"
+      newErrors.email = "Invalid email"
     }
 
     if (!formData.password) {
-      newErrors.password = "La contraseña es requerida"
+      newErrors.password = "Password is required"
     } else if (formData.password.length < 8) {
-      newErrors.password = "La contraseña debe tener al menos 8 caracteres"
+      newErrors.password = "Password must be at least 8 characters"
     }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Las contraseñas no coinciden"
+      newErrors.confirmPassword = "Passwords do not match"
     }
 
     if (!formData.acceptTerms) {
-      newErrors.acceptTerms = "Debes aceptar los términos y condiciones"
+      newErrors.acceptTerms = "You must accept the terms and conditions"
     }
 
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      // Simular registro
+      // Simulate registration
       setTimeout(() => {
         setIsLoading(false)
-        // Redirigir al dashboard o mostrar mensaje de éxito
-        console.log("Usuario registrado:", formData)
+        // Redirect to dashboard or show success message
+        console.log("User registered:", formData)
       }, 2000)
     } else {
       setIsLoading(false)
@@ -79,228 +78,256 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl">
         {/* Header */}
-        <div className="text-center">
-          <Link to="/" className="flex items-center justify-center space-x-2 mb-6">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
+        <div className="text-center mb-8">
+          <Link to="/" className="inline-block">
+            <h1 className="text-3xl font-bold text-gray-900">
+              <span className="text-blue-600">DataMindAI</span>
+            </h1>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900">Crear cuenta</h2>
-          <p className="mt-2 text-gray-600">Únete a DataMindAI y comienza a analizar tus datos financieros con IA</p>
+          <p className="text-gray-600 mt-2">Join thousands of users revolutionizing their financial analysis</p>
         </div>
 
-        <Card>
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Registro</CardTitle>
-            <CardDescription className="text-center">Crea tu cuenta gratuita en menos de 2 minutos</CardDescription>
+        {/* Registration Form */}
+        <Card className="shadow-xl border-0">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl">Create your account</CardTitle>
+            <CardDescription>
+              Start your journey with AI-powered financial analysis
+            </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {/* Registro con OAuth */}
-            <div className="space-y-3">
-              <Button variant="outline" className="w-full" type="button">
-                <Github className="mr-2 h-4 w-4" />
-                Continuar con GitHub
-              </Button>
-              <Button variant="outline" className="w-full" type="button">
-                <Mail className="mr-2 h-4 w-4" />
-                Continuar con Google
-              </Button>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <Separator className="w-full" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">O continúa con email</span>
-              </div>
-            </div>
-
-            {/* Formulario de registro */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <CardContent>
+            <div className="space-y-6">
+              {/* Account Type Selection */}
               <div className="space-y-2">
-                <Label htmlFor="name">Nombre completo</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Juan Pérez"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  className={errors.name ? "border-red-500" : ""}
-                />
-                {errors.name && (
-                  <p className="text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.name}
-                  </p>
-                )}
+                <Label>Account Type</Label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setAccountType("personal")}
+                    className={`p-4 border rounded-lg text-left transition-colors ${
+                      accountType === "personal"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <User className="h-6 w-6 text-blue-600 mb-2" />
+                    <div className="font-medium">Personal</div>
+                    <div className="text-sm text-gray-600">For individual use</div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAccountType("business")}
+                    className={`p-4 border rounded-lg text-left transition-colors ${
+                      accountType === "business"
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <Building className="h-6 w-6 text-blue-600 mb-2" />
+                    <div className="font-medium">Business</div>
+                    <div className="text-sm text-gray-600">For teams and companies</div>
+                  </button>
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="juan@ejemplo.com"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={errors.email ? "border-red-500" : ""}
-                />
-                {errors.email && (
-                  <p className="text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.email}
-                  </p>
-                )}
+              {/* Personal Information */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName">First Name</Label>
+                  <Input id="firstName" placeholder="John" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName">Last Name</Label>
+                  <Input id="lastName" placeholder="Doe" />
+                </div>
               </div>
 
+              {/* Business Information (conditional) */}
+              {accountType === "business" && (
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="companyName">Company Name</Label>
+                    <Input id="companyName" placeholder="Acme Corp" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="jobTitle">Job Title</Label>
+                    <Input id="jobTitle" placeholder="Financial Analyst" />
+                  </div>
+                </div>
+              )}
+
+              {/* Contact Information */}
               <div className="space-y-2">
-                <Label htmlFor="password">Contraseña</Label>
+                <Label htmlFor="email">Email Address</Label>
                 <div className="relative">
+                  <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    className="pl-10"
+                  />
+                </div>
+              </div>
+
+              {/* Password */}
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Mínimo 8 caracteres"
-                    value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    className={errors.password ? "border-red-500" : ""}
+                    placeholder="Create a strong password"
+                    className="pl-10 pr-10"
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </Button>
+                  </button>
                 </div>
-                {errors.password && (
-                  <p className="text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.password}
-                  </p>
-                )}
+                <div className="text-xs text-gray-500">
+                  Must be at least 8 characters with uppercase, lowercase, and number
+                </div>
               </div>
 
+              {/* Confirm Password */}
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirmar contraseña</Label>
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <div className="relative">
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Repite tu contraseña"
-                    value={formData.confirmPassword}
-                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className={errors.confirmPassword ? "border-red-500" : ""}
+                    placeholder="Confirm your password"
+                    className="pl-10 pr-10"
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
                   >
                     {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </Button>
+                  </button>
                 </div>
-                {errors.confirmPassword && (
-                  <p className="text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.confirmPassword}
-                  </p>
-                )}
               </div>
 
-              {/* Checkboxes */}
-              <div className="space-y-3">
+              {/* Terms and Conditions */}
+              <div className="space-y-4">
                 <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="acceptTerms"
-                    checked={formData.acceptTerms}
-                    onCheckedChange={(checked) => handleInputChange("acceptTerms", checked)}
-                    className={errors.acceptTerms ? "border-red-500" : ""}
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    className="rounded border-gray-300 mt-1"
                   />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label
-                      htmlFor="acceptTerms"
-                      className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Acepto los{" "}
-                      <Link to="/terms" className="text-blue-600 hover:underline">
-                        términos y condiciones
-                      </Link>{" "}
-                      y la{" "}
-                      <Link to="/privacy" className="text-blue-600 hover:underline">
-                        política de privacidad
-                      </Link>
-                    </Label>
-                    {errors.acceptTerms && <p className="text-xs text-red-600">{errors.acceptTerms}</p>}
-                  </div>
+                  <Label htmlFor="terms" className="text-sm leading-relaxed">
+                    I agree to the{" "}
+                    <Link to="/terms" className="text-blue-600 hover:underline">
+                      Terms of Service
+                    </Link>{" "}
+                    and{" "}
+                    <Link to="/privacy" className="text-blue-600 hover:underline">
+                      Privacy Policy
+                    </Link>
+                  </Label>
                 </div>
-
                 <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="acceptMarketing"
-                    checked={formData.acceptMarketing}
-                    onCheckedChange={(checked) => handleInputChange("acceptMarketing", checked)}
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    className="rounded border-gray-300 mt-1"
                   />
-                  <Label
-                    htmlFor="acceptMarketing"
-                    className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Quiero recibir actualizaciones y noticias sobre DataMindAI (opcional)
+                  <Label htmlFor="newsletter" className="text-sm leading-relaxed">
+                    I want to receive updates about new features and improvements
                   </Label>
                 </div>
               </div>
 
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Creando cuenta...
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    Crear cuenta gratis
-                  </>
-                )}
+              {/* Submit Button */}
+              <Button className="w-full" type="button">
+                Create Account
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </form>
 
-            {/* Beneficios */}
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h4 className="font-semibold text-blue-900 mb-2">✨ Al registrarte obtienes:</h4>
-              <ul className="text-sm text-blue-800 space-y-1">
-                <li>• Acceso completo a DataMindAI</li>
-                <li>• Chat ilimitado con IA contable</li>
-                <li>• Subida de archivos sin límites</li>
-                <li>• Reportes automáticos</li>
-                <li>• Soporte de la comunidad</li>
-              </ul>
-            </div>
+              {/* Social Login */}
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                </div>
+              </div>
 
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                ¿Ya tienes una cuenta?{" "}
-                <Link to="/login" className="text-blue-600 hover:underline font-medium">
-                  Inicia sesión aquí
-                </Link>
-              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <Button variant="outline" className="w-full" type="button">
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </Button>
+                <Button variant="outline" className="w-full" type="button">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Google
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Footer info */}
-        <div className="text-center text-xs text-gray-500">
-          <p>
-            Al registrarte, aceptas nuestros términos de servicio y política de privacidad.
-            <br />
-            DataMindAI es open source y respeta tu privacidad.
+        {/* Features Preview */}
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-center text-gray-900 mb-6">What you'll get with DataMindAI</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center p-4">
+              <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="h-6 w-6 text-blue-600" />
+              </div>
+              <h4 className="font-medium mb-2">AI-Powered Analysis</h4>
+              <p className="text-sm text-gray-600">
+                Ask questions in natural language and get intelligent financial insights
+              </p>
+            </div>
+            <div className="text-center p-4">
+              <div className="bg-green-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="h-6 w-6 text-green-600" />
+              </div>
+              <h4 className="font-medium mb-2">100% Private</h4>
+              <p className="text-sm text-gray-600">
+                Self-hosted solution where your data never leaves your control
+              </p>
+            </div>
+            <div className="text-center p-4">
+              <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="h-6 w-6 text-purple-600" />
+              </div>
+              <h4 className="font-medium mb-2">Open Source</h4>
+              <p className="text-sm text-gray-600">
+                Transparent, modifiable code that you can customize to your needs
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Login Link */}
+        <div className="mt-8 text-center">
+          <p className="text-gray-600">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-600 hover:underline">
+              Sign in here
+            </Link>
           </p>
+        </div>
+
+        {/* Back to Home */}
+        <div className="mt-4 text-center">
+          <Link to="/" className="text-blue-600 hover:underline text-sm">
+            ← Back to Home
+          </Link>
         </div>
       </div>
     </div>
