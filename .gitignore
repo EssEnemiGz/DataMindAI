@@ -1,0 +1,15 @@
+.env
+.env.production
+.DS_Store
+*.pyc
+__pycache__
+db_data
+frontend/node_modules
+venv/
+.idea/
+.vscode/
+dist/
+logs/
+coverage/
+*.tmp
+*.pyo
