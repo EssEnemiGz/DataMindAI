@@ -3,3 +3,13 @@ psycopg2-binary
 uvicorn
 sqlalchemy
 python-dotenv
+
+# Dependecies for AI providers
+openai
+genai
+requests
+anthropic
+
+# Dependencies for testing
+pytest
+httpx

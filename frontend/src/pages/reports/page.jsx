@@ -10,7 +10,7 @@ export default function ReportsPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="w-full px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <Brain className="h-8 w-8 text-blue-600" />
             <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
@@ -32,7 +32,7 @@ export default function ReportsPage() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Financial Reports & Analytics</h1>
           <p className="text-gray-600">AI-powered insights and comprehensive financial analysis reports.</p>

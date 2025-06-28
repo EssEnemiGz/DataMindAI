@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/about/page.jsx", "src/pages/dashboard/page.jsx", "src/pages/docs/page.jsx", "src/pages/features/page.jsx", "src/pages/login/page.jsx", "src/pages/pricing/page.jsx", "src/pages/register/page.jsx", "src/pages/reports/page.jsx", "src/pages/page.jsx", "src/components/footer.jsx", "src/components/file-upload.jsx", "src/components/navigation.jsx", "src/components/quick-stats.jsx", "src/components/recent-analyses.jsx", "src/components/theme-provider.jsx", "src/components/ui/use-toast.js", "src/hooks/use-mobile.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/about/page.jsx", "src/pages/dashboard/page.jsx", "src/pages/docs/page.jsx", "src/pages/features/page.jsx", "src/pages/login/page.jsx", "src/pages/pricing/page.jsx", "src/pages/register/page.jsx", "src/pages/reports/page.jsx", "src/pages/page.jsx", "src/components/footer.jsx", "src/components/file-upload.jsx", "src/components/navigation.jsx", "src/components/quick-stats.jsx", "src/components/recent-analyses.jsx", "src/components/theme-provider.jsx", "src/components/ui/use-toast.js", "src/hooks/use-mobile.jsx", "src/pages/settings/page.jsx"],
   "exclude": ["node_modules"]
 }
