@@ -13,3 +13,4 @@ logs/
 coverage/
 *.tmp
 *.pyo
+.db_data

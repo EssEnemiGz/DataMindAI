@@ -9,8 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <Brain className="h-6 w-6" />
-              <span className="text-xl font-bold">DataMindAI</span>
+              <img src="/DataMindAI-logo-complete : Font is Nunito Sans - Without white background.png" alt="DataMindAI Logo" className="h-32 w-32" />
             </Link>
             <p className="text-gray-400 text-sm">
               Open-source AI assistant for financial data analysis and accounting.

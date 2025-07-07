@@ -23,7 +23,7 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600" />
+            <img src="/DataMindAI-logo 2 - Without white background.png" alt="DataMindAI Logo" className="h-12 w-12" />
             <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
           </Link>
 
