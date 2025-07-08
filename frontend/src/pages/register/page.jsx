@@ -1,13 +1,12 @@
 "use client"
 
 import React from "react"
-
 import { useState } from "react"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
-import { Github, Mail, Eye, EyeOff, CheckCircle, User, Building } from "lucide-react"
+import { Github, Mail, Eye, EyeOff, CheckCircle, User, Building, Shield, ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
 
 export default function RegisterPage() {
@@ -15,10 +14,13 @@ export default function RegisterPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [accountType, setAccountType] = useState("personal")
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
+    companyName: "",
+    jobTitle: "",
     acceptTerms: false,
     acceptMarketing: false,
   })
@@ -29,11 +31,14 @@ export default function RegisterPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Basic validation
     const newErrors = {}
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required"
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required"
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required"
     }
 
     if (!formData.email.trim()) {
@@ -59,10 +64,8 @@ export default function RegisterPage() {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      // Simulate registration
       setTimeout(() => {
         setIsLoading(false)
-        // Redirect to dashboard or show success message
         console.log("User registered:", formData)
       }, 2000)
     } else {
@@ -99,7 +102,7 @@ export default function RegisterPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Account Type Selection */}
               <div className="space-y-2">
                 <Label>Account Type</Label>
@@ -137,11 +140,25 @@ export default function RegisterPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="John" />
+                  <Input 
+                    id="firstName" 
+                    placeholder="John"
+                    value={formData.firstName}
+                    onChange={(e) => handleInputChange("firstName", e.target.value)}
+                    className={errors.firstName ? "border-red-500" : ""}
+                  />
+                  {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Doe" />
+                  <Input 
+                    id="lastName" 
+                    placeholder="Doe"
+                    value={formData.lastName}
+                    onChange={(e) => handleInputChange("lastName", e.target.value)}
+                    className={errors.lastName ? "border-red-500" : ""}
+                  />
+                  {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
                 </div>
               </div>
 
@@ -150,11 +167,21 @@ export default function RegisterPage() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="companyName">Company Name</Label>
-                    <Input id="companyName" placeholder="Acme Corp" />
+                    <Input 
+                      id="companyName" 
+                      placeholder="Acme Corp"
+                      value={formData.companyName}
+                      onChange={(e) => handleInputChange("companyName", e.target.value)}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="jobTitle">Job Title</Label>
-                    <Input id="jobTitle" placeholder="Financial Analyst" />
+                    <Input 
+                      id="jobTitle" 
+                      placeholder="Financial Analyst"
+                      value={formData.jobTitle}
+                      onChange={(e) => handleInputChange("jobTitle", e.target.value)}
+                    />
                   </div>
                 </div>
               )}
@@ -168,21 +195,26 @@ export default function RegisterPage() {
                     id="email"
                     type="email"
                     placeholder="john@example.com"
-                    className="pl-10"
+                    className={`pl-10 ${errors.email ? "border-red-500" : ""}`}
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
                   />
                 </div>
+                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
               </div>
 
               {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Shield className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Create a strong password"
-                    className="pl-10 pr-10"
+                    className={`pl-10 pr-10 ${errors.password ? "border-red-500" : ""}`}
+                    value={formData.password}
+                    onChange={(e) => handleInputChange("password", e.target.value)}
                   />
                   <button
                     type="button"
@@ -195,18 +227,21 @@ export default function RegisterPage() {
                 <div className="text-xs text-gray-500">
                   Must be at least 8 characters with uppercase, lowercase, and number
                 </div>
+                {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
               </div>
 
               {/* Confirm Password */}
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Shield className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm your password"
-                    className="pl-10 pr-10"
+                    className={`pl-10 pr-10 ${errors.confirmPassword ? "border-red-500" : ""}`}
+                    value={formData.confirmPassword}
+                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
                   />
                   <button
                     type="button"
@@ -216,6 +251,7 @@ export default function RegisterPage() {
                     {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
+                {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword}</p>}
               </div>
 
               {/* Terms and Conditions */}
@@ -225,6 +261,8 @@ export default function RegisterPage() {
                     type="checkbox"
                     id="terms"
                     className="rounded border-gray-300 mt-1"
+                    checked={formData.acceptTerms}
+                    onChange={(e) => handleInputChange("acceptTerms", e.target.checked)}
                   />
                   <Label htmlFor="terms" className="text-sm leading-relaxed">
                     I agree to the{" "}
@@ -237,11 +275,15 @@ export default function RegisterPage() {
                     </Link>
                   </Label>
                 </div>
+                {errors.acceptTerms && <p className="text-red-500 text-sm">{errors.acceptTerms}</p>}
+                
                 <div className="flex items-start space-x-2">
                   <input
                     type="checkbox"
                     id="newsletter"
                     className="rounded border-gray-300 mt-1"
+                    checked={formData.acceptMarketing}
+                    onChange={(e) => handleInputChange("acceptMarketing", e.target.checked)}
                   />
                   <Label htmlFor="newsletter" className="text-sm leading-relaxed">
                     I want to receive updates about new features and improvements
@@ -250,8 +292,8 @@ export default function RegisterPage() {
               </div>
 
               {/* Submit Button */}
-              <Button className="w-full" type="button">
-                Create Account
+              <Button className="w-full" type="submit" disabled={isLoading}>
+                {isLoading ? "Creating Account..." : "Create Account"}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 
@@ -275,7 +317,7 @@ export default function RegisterPage() {
                   Google
                 </Button>
               </div>
-            </div>
+            </form>
           </CardContent>
         </Card>
 

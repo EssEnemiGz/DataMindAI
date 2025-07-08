@@ -12,6 +12,7 @@ import SettingsPage from './pages/settings/page';
 import { SidebarProvider } from './components/ui/sidebar';
 import { CompleteLayout } from './components/layouts/completeLayout';
 import SimpleLayout from './components/layouts/simpleLayout';
+import FeaturesPage from './pages/features/page';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/docs" element={<DocsPage />} />
+                <Route path="/features" element={<FeaturesPage />} />
               </Route>
               <Route element={<SimpleLayout />}>
                 <Route path="/dashboard" element={<DashboardPage />} />
