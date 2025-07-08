@@ -3,6 +3,8 @@ psycopg2-binary
 uvicorn
 sqlalchemy
 python-dotenv
+starlette-session
+bcrypt
 
 # Dependecies for AI providers
 openai
