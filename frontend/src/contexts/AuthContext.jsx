@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { authService } from '../lib/authService';
 import { useApiMonitor } from '../hooks/useApiMonitor';
-import { useRouteAuth } from '../hooks/useRouteAuth';
 
 export const AuthContext = createContext();
 
@@ -20,8 +19,6 @@ export const AuthProvider = ({ children }) => {
   const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
   
   useApiMonitor();
-  
-  const { shouldCheckAuth, isPublicRoute } = useRouteAuth();
 
   const login = useCallback(async (email, password) => {
     setIsLoading(true);
@@ -54,40 +51,18 @@ export const AuthProvider = ({ children }) => {
     if (hasCheckedAuth) return;
     
     const checkAuth = async () => {
-      if (isPublicRoute()) {
-        console.log('📄 Public route detected, skipping auth check');
-        setUser(null);
-        setIsAuthenticated(false);
-        setIsLoading(false);
-        setHasCheckedAuth(true);
-        return;
-      }
-      
-      if (!shouldCheckAuth()) {
-        console.log('📄 Non-protected route, skipping auth check');
-        setUser(null);
-        setIsAuthenticated(false);
-        setIsLoading(false);
-        setHasCheckedAuth(true);
-        return;
-      }
-      
       try {
-        console.log('🔐 Checking authentication...');
         const userData = await authService.getCurrentUser();
         if (userData) {
           setUser(userData);
           setIsAuthenticated(true);
-          console.log('✅ User authenticated:', userData.email);
         } else {
           setUser(null);
           setIsAuthenticated(false);
-          console.log('❌ No user found');
         }
       } catch (error) {
         setUser(null);
         setIsAuthenticated(false);
-        console.log('❌ Auth check failed:', error.message);
       } finally {
         setIsLoading(false);
         setHasCheckedAuth(true);
@@ -95,7 +70,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkAuth();
-  }, [hasCheckedAuth, isPublicRoute, shouldCheckAuth]);
+  }, [hasCheckedAuth]);
 
   const value = useMemo(() => ({
     user,

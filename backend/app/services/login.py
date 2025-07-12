@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Response, Request, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from ..models.auth_service import AuthService
-from ..models.sessions import create_session, deactivate_session
+from ..models.sessions import create_session, deactivate_session, session_manager
 
 class LoginRequest(BaseModel):
     email: str
@@ -25,14 +25,16 @@ async def login(login_data: LoginOnlyRequest, response: Response, db: Session = 
     
     session = create_session(str(user_data["user_id"]))
     
-    # Set session cookie
+    # Set session cookie with improved configuration
     response.set_cookie(
         key="session_id",
         value=session.session_id,
-        httponly=True,
+        httponly=False,  # Changed to False so JavaScript can access it
         secure=False,  # Set to True in production with HTTPS
         samesite="lax",
-        max_age=86400  # 24 hours
+        max_age=86400,  # 24 hours
+        path="/",
+        domain=None  # Allow cookies to work across subdomains
     )
         
     return {
@@ -55,9 +57,10 @@ async def logout(request: Request, response: Response):
     # Clear the session cookie
     response.delete_cookie(
         key="session_id",
-        httponly=True,
+        httponly=False,
         secure=False,
-        samesite="lax"
+        samesite="lax",
+        path="/"
     )
     
     return {
@@ -81,3 +84,27 @@ async def get_current_user(request: Request, db: Session = Depends(get_db)):
         raise e
     except Exception:
         raise HTTPException(status_code=401, detail="Session verification failed")
+
+@login_bp.get("/debug/sessions")
+async def debug_sessions():
+    """
+    Debug endpoint to show all active sessions
+    """
+    sessions = session_manager.sessions
+    active_sessions = {k: v for k, v in sessions.items() if v.is_active}
+    
+    return {
+        "total_sessions": len(sessions),
+        "active_sessions": len(active_sessions),
+        "session_ids": list(active_sessions.keys()),
+        "session_details": [
+            {
+                "session_id": session.session_id,
+                "user_id": session.user_id,
+                "created_at": session.created_at.isoformat(),
+                "last_activity": session.last_activity.isoformat(),
+                "is_active": session.is_active
+            }
+            for session in active_sessions.values()
+        ]
+    }

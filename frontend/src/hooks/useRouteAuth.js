@@ -54,10 +54,15 @@ export const useRouteAuth = () => {
     return isProtectedRoute(path);
   };
   
+  const shouldRedirectOnAuthFail = (path = location.pathname) => {
+    return isProtectedRoute(path);
+  };
+  
   return {
     isProtectedRoute,
     isPublicRoute,
     shouldCheckAuth,
+    shouldRedirectOnAuthFail,
     currentPath: location.pathname
   };
 }; 

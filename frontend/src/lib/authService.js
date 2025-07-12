@@ -52,9 +52,12 @@ export const authService = {
 
   async getCurrentUser() {
     try {
+      console.log('🔍 Calling /api/v1/me...');
       const response = await api.get('/api/v1/me');
+      console.log('✅ /api/v1/me response:', response.data);
       return response.data;
     } catch (error) {
+      console.log('❌ /api/v1/me error:', error.response?.status, error.response?.data);
       return null;
     }
   },

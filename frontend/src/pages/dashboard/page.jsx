@@ -7,12 +7,19 @@ import { FileUpload } from "../../components/file-upload"
 import { RecentAnalyses } from "../../components/recent-analyses"
 import { QuickStats } from "../../components/quick-stats"
 import { useAuth } from "../../hooks/useAuth"
+import { useEffect } from "react"
 import { LoadingSpinner } from "../../components/loading-spinner"
 import { DashboardNavigation } from "../../components/dashboard-navigation"
 
 export default function DashboardPage() {
   const { user, isAuthenticated, isLoading } = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated && !isLoading) {
+      navigate('/login')
+    }
+  }, [isAuthenticated, isLoading, navigate])
 
   if (isLoading) {
     return (
@@ -23,7 +30,6 @@ export default function DashboardPage() {
   }
 
   if (!isAuthenticated) {
-    navigate('/login')
     return null
   }
 

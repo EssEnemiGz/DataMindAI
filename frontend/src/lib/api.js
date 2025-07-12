@@ -39,19 +39,31 @@ api.interceptors.response.use(
                 currentPath.startsWith(route)
             );
             
-            if (isProtectedRoute) {
+            // Check if we have a session cookie before redirecting
+            const hasSessionCookie = document.cookie.includes('session_id=');
+            console.log('🍪 Checking cookies in interceptor:', document.cookie);
+            console.log('🍪 Has session cookie:', hasSessionCookie);
+            console.log('🛡️ Is protected route:', isProtectedRoute);
+            
+            // Only redirect on protected routes
+            if (isProtectedRoute && !hasSessionCookie) {
                 isRedirecting = true;
                 
                 if (window.location.pathname !== '/login') {
-                    console.log('🔄 Redirecting from protected route to login');
-                    window.location.href = "/login";
-                }
-                
-                setTimeout(() => {
+                    console.log('🔄 No session cookie found on protected route, redirecting to login');
+                    setTimeout(() => {
+                        if (window.location.pathname !== '/login') {
+                            window.location.href = "/login";
+                        }
+                        isRedirecting = false;
+                    }, 100);
+                } else {
                     isRedirecting = false;
-                }, 1000);
+                }
+            } else if (isProtectedRoute && hasSessionCookie) {
+                console.log('🍪 Session cookie found on protected route, not redirecting - letting AuthContext handle it');
             } else {
-                console.log('ℹ️ 401 error on public route, not redirecting');
+                console.log('ℹ️ 401 error on public route, not redirecting - user can stay here');
             }
         }
         return Promise.reject(error);
