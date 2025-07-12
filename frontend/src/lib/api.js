@@ -6,26 +6,53 @@ const api = axios.create({
     headers: {
         "Content-Type": "application/json",
     },
-    withCredentials: false
+    withCredentials: true
 });
 
-api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => Promise.reject(error)
-);
+let isRedirecting = false;
+
+const protectedRoutes = [
+    '/dashboard',
+    '/reports', 
+    '/settings',
+    '/chat',
+    '/profile'
+];
+
+const publicRoutes = [
+    '/',
+    '/login',
+    '/register',
+    '/features',
+    '/docs',
+    '/about',
+    '/pricing'
+];
 
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.status === 401) {
-            localStorage.removeItem("token");
-            window.location.href = "/login";
+        if (error.response?.status === 401 && !isRedirecting) {
+            const currentPath = window.location.pathname;
+            
+            const isProtectedRoute = protectedRoutes.some(route => 
+                currentPath.startsWith(route)
+            );
+            
+            if (isProtectedRoute) {
+                isRedirecting = true;
+                
+                if (window.location.pathname !== '/login') {
+                    console.log('🔄 Redirecting from protected route to login');
+                    window.location.href = "/login";
+                }
+                
+                setTimeout(() => {
+                    isRedirecting = false;
+                }, 1000);
+            } else {
+                console.log('ℹ️ 401 error on public route, not redirecting');
+            }
         }
         return Promise.reject(error);
     }

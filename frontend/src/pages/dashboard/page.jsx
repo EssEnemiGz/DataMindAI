@@ -1,45 +1,71 @@
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
-import { Upload, FileSpreadsheet, BarChart3, Brain, TrendingUp } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Upload, FileSpreadsheet, BarChart3, Brain, TrendingUp, User, LogOut } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 import { FileUpload } from "../../components/file-upload"
 import { RecentAnalyses } from "../../components/recent-analyses"
 import { QuickStats } from "../../components/quick-stats"
+import { useAuth } from "../../hooks/useAuth"
+import { LoadingSpinner } from "../../components/loading-spinner"
+import { DashboardNavigation } from "../../components/dashboard-navigation"
 
 export default function DashboardPage() {
+  const { user, isAuthenticated, isLoading } = useAuth()
+  const navigate = useNavigate()
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <LoadingSpinner size="large" />
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) {
+    navigate('/login')
+    return null
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
-          </Link>
-          <nav className="flex items-center space-x-6">
-            <Link to="/dashboard" className="text-blue-600 font-medium">
-              Dashboard
-            </Link>
-            <Link to="/reports" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Reports
-            </Link>
-            <Link to="/settings" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Settings
-            </Link>
-            <Button variant="outline" size="sm">
-              Account
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <DashboardNavigation></DashboardNavigation>
 
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to DataMindAI Dashboard</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome back, {user?.username || user?.email || 'User'}!
+          </h1>
           <p className="text-gray-600">Upload your financial data and get AI-powered insights in minutes.</p>
         </div>
+
+        {/* User Info Card */}
+        {user && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>User Information</CardTitle>
+              <CardDescription>Your account details</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Username</p>
+                  <p className="text-lg">{user.username || 'Not set'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Email</p>
+                  <p className="text-lg">{user.email}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-500">User ID</p>
+                  <p className="text-lg">{user.user_id}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Quick Stats */}
         <QuickStats />

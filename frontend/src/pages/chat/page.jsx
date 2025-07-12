@@ -121,11 +121,6 @@ export default function ChatPage() {
     setMessages((prev) => [...prev, userMessage])
     setInputValue("")
     setIsLoading(true)
-
-    // Auto-resize textarea
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "24px"
-    }
   }
 
   const handleKeyPress = (e) => {
@@ -140,7 +135,6 @@ export default function ChatPage() {
 
     // Auto-resize textarea
     const textarea = e.target
-    textarea.style.height = "24px"
     textarea.style.height = Math.min(textarea.scrollHeight, 200) + "px"
   }
 
@@ -164,7 +158,6 @@ export default function ChatPage() {
 
   const handleSuggestedPrompt = (prompt) => {
     setInputValue(prompt)
-    textareaRef.current?.focus()
   }
 
   const formatTimeAgo = (date) => {
@@ -254,7 +247,7 @@ export default function ChatPage() {
                     <User className="h-4 w-4 text-white" />
                   </div>
                   <div className="flex-1 min-w-0 text-left">
-                    <div className="text-sm font-medium truncate">John Doe</div>
+                    <div className="text-sm font-medium truncate text-white">John Doe</div>
                     <div className="text-xs text-gray-400">Free Plan</div>
                   </div>
                   <MoreHorizontal className="h-4 w-4 text-gray-400" />
@@ -424,7 +417,7 @@ export default function ChatPage() {
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-gray-200 bg-white p-4">
+        <div className="border-t border-gray-200 bg-white p-4 min-h-[80px]">
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               <Textarea
@@ -433,7 +426,7 @@ export default function ChatPage() {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Send a message to DataMindAI..."
-                className="min-h-[24px] max-h-[200px] resize-none border-gray-300 rounded-xl pr-12 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="min-h-[24px] max-h-[200px] resize-none border-gray-300 rounded-xl pr-12 py-3 focus:ring-0 focus:outline-none"
                 disabled={isLoading}
                 rows={1}
               />

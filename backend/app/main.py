@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from .services.login import login_bp
 from .services.register import register_bp
+from .services.protected import protected_bp
 from dotenv import load_dotenv
 import os
 
@@ -37,6 +38,7 @@ app.add_middleware(
 
 app.include_router(login_bp)
 app.include_router(register_bp)
+app.include_router(protected_bp)
 
 @app.get("/", tags=["root"])
 async def read_root():
