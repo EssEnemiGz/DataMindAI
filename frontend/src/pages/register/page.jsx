@@ -7,9 +7,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Github, Mail, Eye, EyeOff, CheckCircle, User, Building, Shield, ArrowRight } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { authService } from "../../lib/authService"
 
 export default function RegisterPage() {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [accountType, setAccountType] = useState("personal")
@@ -30,6 +32,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    setErrors({})
 
     const newErrors = {}
 
@@ -61,14 +64,43 @@ export default function RegisterPage() {
       newErrors.acceptTerms = "You must accept the terms and conditions"
     }
 
-    setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setIsLoading(false)
+      return
+    }
 
-    if (Object.keys(newErrors).length === 0) {
-      setTimeout(() => {
-        setIsLoading(false)
-        console.log("User registered:", formData)
-      }, 2000)
-    } else {
+    try {
+      const username = `${formData.firstName} ${formData.lastName}`
+      const response = await authService.register(username, formData.email, formData.password)
+      console.log("Registration successful:", response)
+      
+      // Auto-login after registration
+      await authService.login(formData.email, formData.password)
+      navigate('/dashboard')
+    } catch (error) {
+      console.error("Registration error:", error)
+      
+      if (error.detail) {
+        if (error.detail === "User already exists") {
+          setErrors({
+            general: "An account with this email already exists. Please try a different email or sign in instead."
+          })
+        } else {
+          setErrors({
+            general: error.detail
+          })
+        }
+      } else if (error.message) {
+        setErrors({
+          general: error.message
+        })
+      } else {
+        setErrors({
+          general: "Registration failed. Please try again."
+        })
+      }
+    } finally {
       setIsLoading(false)
     }
   }
@@ -92,6 +124,13 @@ export default function RegisterPage() {
           </Link>
           <p className="text-gray-600 mt-2">Join thousands of users revolutionizing their financial analysis</p>
         </div>
+
+        {/* Error Message */}
+        {errors.general && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {errors.general}
+          </div>
+        )}
 
         {/* Registration Form */}
         <Card className="shadow-xl border-0">

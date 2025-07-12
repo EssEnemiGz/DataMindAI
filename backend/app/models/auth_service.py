@@ -16,14 +16,21 @@ class AuthService:
         if not user:
             raise HTTPException(status_code=401, detail="Invalid credentials")
         
-        if not bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-            raise HTTPException(status_code=401, detail="Invalid credentials")
-        
-        return {
-            "message": "Login successful",
-            "user_id": user.id,
-            "email": user.email,
-        }
+        try:
+            stored_password = user.password
+            
+            if not bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                raise HTTPException(status_code=401, detail="Invalid credentials")
+            
+            return {
+                "message": "Login successful",
+                "user_id": user.id,
+                "email": user.email,
+            }
+        except ValueError:
+            raise HTTPException(status_code=500, detail="Password format error")
+        except Exception:
+            raise HTTPException(status_code=500, detail="Authentication error")
     
     def get_user_by_email(self, email: str):
         """

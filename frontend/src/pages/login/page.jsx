@@ -1,19 +1,18 @@
 "use client"
 
 import React from "react"
-
 import { useState } from "react"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Github, Mail, Eye, EyeOff, CheckCircle, Shield, ArrowRight } from "lucide-react"
-import { Link } from "react-router-dom"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
+import { Link, useNavigate } from "react-router-dom"
+import { authService } from "../../lib/authService"
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,9 +21,10 @@ export default function LoginPage() {
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    setErrors({})
 
     // Basic validation
     const newErrors = {}
@@ -39,16 +39,24 @@ export default function LoginPage() {
       newErrors.password = "Password is required"
     }
 
-    setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setIsLoading(false)
+      return
+    }
 
-    if (Object.keys(newErrors).length === 0) {
-      // Simular login
-      setTimeout(() => {
-        setIsLoading(false)
-        // Redirigir al dashboard
-        console.log("Usuario logueado:", formData)
-      }, 2000)
-    } else {
+    try {
+      const response = await authService.login(formData.email, formData.password)
+      console.log("Login successful:", response)
+      
+      // Redirect to dashboard
+      navigate('/dashboard')
+    } catch (error) {
+      console.error("Login error:", error)
+      setErrors({
+        general: error.message || "Login failed. Please try again."
+      })
+    } finally {
       setIsLoading(false)
     }
   }
@@ -73,7 +81,14 @@ export default function LoginPage() {
           <p className="text-gray-600 mt-2">Your AI Accounting Assistant</p>
         </div>
 
-        {/* Login/Register Tabs */}
+        {/* Error Message */}
+        {errors.general && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {errors.general}
+          </div>
+        )}
+
+        {/* Login Form */}
         <Card className="shadow-xl border-0">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Welcome back</CardTitle>
@@ -82,15 +97,7 @@ export default function LoginPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="login" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">Sign In</TabsTrigger>
-                <TabsTrigger value="register">Sign Up</TabsTrigger>
-              </TabsList>
-
-              {/* Login Tab */}
-              <TabsContent value="login" className="space-y-4">
-                <div className="space-y-4">
+            <form onSubmit={handleLoginSubmit} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <div className="relative">
@@ -101,9 +108,10 @@ export default function LoginPage() {
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="pl-10"
+                        className={`pl-10 ${errors.email ? 'border-red-500' : ''}`}
                       />
                     </div>
+                    {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="password">Password</Label>
@@ -115,7 +123,7 @@ export default function LoginPage() {
                         placeholder="Enter your password"
                         value={formData.password}
                         onChange={(e) => handleInputChange("password", e.target.value)}
-                        className="pl-10 pr-10"
+                        className={`pl-10 pr-10 ${errors.password ? 'border-red-500' : ''}`}
                       />
                       <button
                         type="button"
@@ -125,12 +133,15 @@ export default function LoginPage() {
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
                     </div>
+                    {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <input
                         type="checkbox"
                         id="remember"
+                        checked={formData.rememberMe}
+                        onChange={(e) => handleInputChange("rememberMe", e.target.checked)}
                         className="rounded border-gray-300"
                       />
                       <Label htmlFor="remember" className="text-sm">
@@ -141,18 +152,18 @@ export default function LoginPage() {
                       Forgot password?
                     </Link>
                   </div>
-                  <Button className="w-full" type="button">
-                    Sign In
+                  <Button className="w-full" type="submit" disabled={isLoading}>
+                    {isLoading ? "Signing In..." : "Sign In"}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                </div>
+                </form>
 
-                <div className="relative">
+                <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                    <span className="bg-white px-4 text-gray-500">Or continue with</span>
                   </div>
                 </div>
 
@@ -166,117 +177,8 @@ export default function LoginPage() {
                     Google
                   </Button>
                 </div>
-              </TabsContent>
-
-              {/* Register Tab */}
-              <TabsContent value="register" className="space-y-4">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="registerEmail">Email</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input
-                        id="registerEmail"
-                        type="email"
-                        placeholder="john@example.com"
-                        className="pl-10"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="registerPassword">Password</Label>
-                    <div className="relative">
-                      <Shield className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input
-                        id="registerPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Create a password"
-                        className="pl-10 pr-10"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-                      >
-                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </button>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmPassword">Confirm Password</Label>
-                    <div className="relative">
-                      <Shield className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input
-                        id="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Confirm your password"
-                        className="pl-10 pr-10"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-                      >
-                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      id="terms"
-                      className="rounded border-gray-300"
-                    />
-                    <Label htmlFor="terms" className="text-sm">
-                      I agree to the{" "}
-                      <Link to="/terms" className="text-blue-600 hover:underline">
-                        Terms of Service
-                      </Link>{" "}
-                      and{" "}
-                      <Link to="/privacy" className="text-blue-600 hover:underline">
-                        Privacy Policy
-                      </Link>
-                    </Label>
-                  </div>
-                  <Button className="w-full" type="button">
-                    Create Account
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t" />
-                  </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-white px-2 text-gray-500">Or continue with</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="w-full" type="button">
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
-                  </Button>
-                  <Button variant="outline" className="w-full" type="button">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Google
-                  </Button>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* Features Preview */}
         <div className="mt-8 text-center">

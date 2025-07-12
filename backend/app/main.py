@@ -2,15 +2,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from .services.login import login_bp
+from .services.register import register_bp
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 app = FastAPI()
 
-CORS_ORIGINS_STR = os.getenv("CORS_ORIGINS")
-if not CORS_ORIGINS_STR:
-    raise ValueError("CORS_ORIGINS environment variable is not set.")
+CORS_ORIGINS_STR = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173")
 
 if CORS_ORIGINS_STR == "*":
     CORS_ORIGINS = ["*"]
@@ -37,6 +36,7 @@ app.add_middleware(
 )
 
 app.include_router(login_bp)
+app.include_router(register_bp)
 
 @app.get("/", tags=["root"])
 async def read_root():
