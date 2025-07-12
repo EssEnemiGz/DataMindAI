@@ -7,10 +7,10 @@ import { Link } from "react-router-dom"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden w-full">
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="container mx-auto text-center max-w-4xl">
+        <div className="w-full text-center px-4">
           <Badge className="mb-6" variant="outline">
             🚀 Open Source • Free • Self-hosted
           </Badge>
@@ -25,38 +25,38 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link to="/register">
-              <Button size="lg" className="text-lg px-8 py-3">
+              <Button size="lg" className="text-lg px-4 sm:px-6 md:px-8 py-3">
                 Start Free
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <a href="https://github.com/EssEnemiGz/datamindai" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+              <Button variant="outline" size="lg" className="text-lg px-4 sm:px-6 md:px-8 py-3">
                 <Github className="mr-2 h-5 w-5" />
                 View on GitHub
               </Button>
             </a>
-            <Button variant="ghost" size="lg" className="text-lg px-8 py-3">
+            <Button variant="ghost" size="lg" className="text-lg px-4 sm:px-6 md:px-8 py-3">
               <Play className="mr-2 h-5 w-5" />
               Watch Demo
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-xs sm:max-w-md mx-auto">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
                 0
               </div>
-              <div className="text-sm text-gray-600">GitHub Stars</div>
+              <div className="text-xs sm:text-sm text-gray-600">GitHub Stars</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">0</div>
-              <div className="text-sm text-gray-600">Active Users</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">0</div>
+              <div className="text-xs sm:text-sm text-gray-600">Active Users</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">1</div>
-              <div className="text-sm text-gray-600">Contributors</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">1</div>
+              <div className="text-xs sm:text-sm text-gray-600">Contributors</div>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function HomePage() {
 
       {/* Problem it solves */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-4xl">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Tired of Excel and complicated tools?</h2>
             <p className="text-xl text-gray-600">DataMindAI eliminates the complexity of financial analysis</p>
@@ -119,7 +119,7 @@ export default function HomePage() {
 
       {/* Main Features */}
       <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Main Features</h2>
             <p className="text-xl text-gray-600">Everything you need for intelligent financial analysis</p>
@@ -191,7 +191,7 @@ export default function HomePage() {
 
       {/* Demo/Screenshots */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">See DataMindAI in Action</h2>
             <p className="text-xl text-gray-600">From uploading files to getting intelligent insights</p>
@@ -237,14 +237,14 @@ export default function HomePage() {
 
       {/* Comparison */}
       <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why choose DataMindAI?</h2>
             <p className="text-xl text-gray-600">Comparison with traditional tools</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-4 px-4">
               <table className="w-full bg-white rounded-lg shadow-lg">
                 <thead className="bg-gray-50">
                   <tr>
@@ -300,7 +300,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-3xl">
+        <div className="w-full px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-gray-600">We answer your questions about DataMindAI</p>
@@ -354,14 +354,14 @@ export default function HomePage() {
 
       {/* Final CTA */}
       <section className="py-20 px-4 bg-blue-600">
-        <div className="container mx-auto text-center max-w-3xl">
+        <div className="w-full text-center px-4">
           <h2 className="text-4xl font-bold text-white mb-6">Ready to revolutionize your financial analysis?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Join hundreds of companies already using DataMindAI to make better financial decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/register">
-              <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
+              <Button size="lg" variant="secondary" className="text-lg px-4 sm:px-6 md:px-8 py-3">
                 Start Free Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -370,7 +370,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-3 border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
+                className="text-lg px-4 sm:px-6 md:px-8 py-3 border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
               >
                 <Github className="mr-2 h-5 w-5" />
                 Download from GitHub

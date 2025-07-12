@@ -41,7 +41,7 @@ export default function FeaturesPage() {
 
           {/* Feature Tabs */}
           <Tabs defaultValue="ai-analysis" className="mb-16">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8 h-full">
               <TabsTrigger value="ai-analysis">AI Accounting</TabsTrigger>
               <TabsTrigger value="excel-integration">Excel</TabsTrigger>
               <TabsTrigger value="reports">Reports</TabsTrigger>

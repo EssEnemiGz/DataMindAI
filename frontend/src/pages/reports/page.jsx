@@ -18,7 +18,7 @@ export default function ReportsPage() {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-full">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="revenue">Revenue Analysis</TabsTrigger>
             <TabsTrigger value="expenses">Expense Tracking</TabsTrigger>
@@ -170,26 +170,28 @@ export default function ReportsPage() {
                       status: "completed",
                     },
                   ].map((report, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex items-center space-x-4">
-                        <div className="p-2 bg-blue-100 rounded-lg">
+                    <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg gap-3">
+                      <div className="flex items-center space-x-4 flex-1 min-w-0">
+                        <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
                           <FileText className="h-6 w-6 text-blue-600" />
                         </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900">{report.title}</h4>
-                          <p className="text-sm text-gray-500">
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-medium text-gray-900 truncate">{report.title}</h4>
+                          <p className="text-sm text-gray-500 truncate">
                             {report.type} • {report.date}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center justify-between sm:justify-end space-x-2 flex-shrink-0">
                         <Badge variant="default">{report.status}</Badge>
-                        <Button variant="ghost" size="sm">
-                          <Download className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="sm">
-                          <Share className="h-4 w-4" />
-                        </Button>
+                        <div className="flex items-center space-x-1">
+                          <Button variant="ghost" size="sm">
+                            <Download className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <Share className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   ))}

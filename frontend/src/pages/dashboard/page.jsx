@@ -170,8 +170,13 @@ export default function DashboardPage() {
                   <CardTitle className="text-lg">Profit & Loss Analysis</CardTitle>
                   <CardDescription>Comprehensive P&L statement analysis with AI insights</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button className="w-full">Use Template</Button>
+                <CardContent className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-600 mb-2 sm:mb-0">Get detailed insights into your revenue, costs, and profitability trends.</p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <Button className="w-full sm:w-auto">Use Template</Button>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -180,8 +185,13 @@ export default function DashboardPage() {
                   <CardTitle className="text-lg">Cash Flow Forecast</CardTitle>
                   <CardDescription>Predict future cash flows and identify potential issues</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button className="w-full">Use Template</Button>
+                <CardContent className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-600 mb-2 sm:mb-0">Forecast your cash position and identify potential shortfalls or surpluses.</p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <Button className="w-full sm:w-auto">Use Template</Button>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -190,8 +200,13 @@ export default function DashboardPage() {
                   <CardTitle className="text-lg">Budget vs Actual</CardTitle>
                   <CardDescription>Compare budgeted amounts with actual spending</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button className="w-full">Use Template</Button>
+                <CardContent className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-600 mb-2 sm:mb-0">Track budget performance and identify variances that need attention.</p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <Button className="w-full sm:w-auto">Use Template</Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>

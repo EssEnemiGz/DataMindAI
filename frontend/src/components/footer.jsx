@@ -4,12 +4,12 @@ import { Brain, Github, Twitter, Linkedin } from "lucide-react"
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container-narrow py-12">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/DataMindAI-logo-complete : Font is Nunito Sans - Without white background.png" alt="DataMindAI Logo" className="h-32 w-32" />
+              <img src="/DataMindAI-logo-complete : Font is Nunito Sans - Without white background.png" alt="DataMindAI Logo" className="h-16 w-16 sm:h-24 sm:w-24 md:h-32 md:w-32" />
             </Link>
             <p className="text-gray-400 text-sm">
               Open-source AI assistant for financial data analysis and accounting.

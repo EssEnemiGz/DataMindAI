@@ -84,7 +84,7 @@ export default function DocsPage() {
 
         {/* Main Documentation Tabs */}
         <Tabs defaultValue="installation" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-full">
             <TabsTrigger value="installation">Installation</TabsTrigger>
             <TabsTrigger value="usage">Usage</TabsTrigger>
             <TabsTrigger value="deployment">Deployment</TabsTrigger>
@@ -150,11 +150,11 @@ export default function DocsPage() {
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-blue-600 font-bold text-sm">1</span>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-h-full w-full">
                       <h4 className="font-semibold mb-2">Clone the repository</h4>
-                      <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm">
-                        <div className="flex items-center justify-between">
-                          <code>git clone https://github.com/EssEnemiGz/datamindai.git</code>
+                      <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm w-full overflow-x-auto">
+                        <div className="flex items-center justify-between w-full">
+                          <code className="break-all whitespace-pre-wrap">git clone https://github.com/EssEnemiGz/datamindai.git</code>
                           <Button size="sm" variant="ghost">
                             <Copy className="h-4 w-4" />
                           </Button>
@@ -201,16 +201,23 @@ export default function DocsPage() {
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-blue-600 font-bold text-sm">4</span>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-h-full w-full">
                       <h4 className="font-semibold mb-2">Configure environment variables</h4>
-                      <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm space-y-1">
-                        <div>OPENAI_API_KEY=your_openai_key</div>
-                        <div>GEMINI_API_KEY=your_gemini_key</div>
-                        <div>OLLAMA_URL=ollama_url</div>
-                        <div>ANTHROPIC_API=your_anthropic_key</div>
-                        <div>CORS_ORIGINS=http://localhost:3000</div>
-                        <div>POSTGRES_USER=root</div>
-                        <div>POSTGRES_PASSWORD=your_password</div>
+                      <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm w-full overflow-x-auto">
+                        <div className="flex items-center justify-between w-full">
+                          <code className="break-all whitespace-pre-wrap">
+                            OPENAI_API_KEY=your_openai_key
+                            GEMINI_API_KEY=your_gemini_key
+                            OLLAMA_URL=ollama_url
+                            ANTHROPIC_API=your_anthropic_key
+                            CORS_ORIGINS=http://localhost:3000
+                            POSTGRES_USER=root
+                            POSTGRES_PASSWORD=your_password
+                          </code>
+                          <Button size="sm" variant="ghost">
+                            <Copy className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -253,14 +260,14 @@ export default function DocsPage() {
                   <p className="text-gray-600">
                     If you prefer not to use external APIs, you can run AI models locally with Ollama:
                   </p>
-                  <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm space-y-2">
-                    <div># Install Ollama</div>
-                    <div>curl -fsSL https://ollama.ai/install.sh | sh</div>
-                    <div className="mt-2"># Download a model</div>
-                    <div>ollama pull llama2</div>
-                    <div className="mt-2"># Configure DataMindAI to use Ollama</div>
-                    <div>OLLAMA_BASE_URL=http://localhost:11434</div>
-                    <div>AI_MODEL=ollama/llama2</div>
+                  <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm space-y-2 overflow-x-auto">
+                    <div className="break-all"># Install Ollama</div>
+                    <div className="break-all">curl -fsSL https://ollama.ai/install.sh | sh</div>
+                    <div className="mt-2 break-all"># Download a model</div>
+                    <div className="break-all">ollama pull llama2</div>
+                    <div className="mt-2 break-all"># Configure DataMindAI to use Ollama</div>
+                    <div className="break-all">OLLAMA_BASE_URL=http://localhost:11434</div>
+                    <div className="break-all">AI_MODEL=ollama/llama2</div>
                   </div>
                 </div>
               </CardContent>
