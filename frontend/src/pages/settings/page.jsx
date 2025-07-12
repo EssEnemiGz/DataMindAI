@@ -134,7 +134,7 @@ export default function SettingsPage() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 h-full">
             <TabsTrigger value="profile" className="flex items-center space-x-2">
               <User className="h-4 w-4" />
               <span className="hidden sm:inline">Profile</span>
