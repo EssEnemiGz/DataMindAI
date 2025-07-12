@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from ..models.tables import User
 from fastapi import HTTPException
+from ..models.sessions import get_session
 import bcrypt
 
 class AuthService:
@@ -37,6 +38,35 @@ class AuthService:
         Get user by email
         """
         return self.db.query(User).filter(User.email == email).first()
+    
+    def get_user_by_id(self, user_id: int):
+        """
+        Get user by ID
+        """
+        return self.db.query(User).filter(User.id == user_id).first()
+    
+    def verify_session(self, session_id: str):
+        """
+        Verify session and return user data
+        """
+        
+        session = get_session(session_id)
+        
+        if not session:
+            raise HTTPException(status_code=401, detail="Invalid or expired session")
+        
+        user = self.get_user_by_id(int(session.user_id))
+        
+        if not user:
+            raise HTTPException(status_code=401, detail="User not found")
+        
+        user_data = {
+            "user_id": user.id,
+            "email": user.email,
+            "username": user.username,
+            "session_id": session_id
+        }
+        return user_data
     
     def create_user(self, username: str, email: str, password: str):
         """
