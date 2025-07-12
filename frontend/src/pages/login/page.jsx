@@ -8,10 +8,11 @@ import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Github, Mail, Eye, EyeOff, CheckCircle, Shield, ArrowRight } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
-import { authService } from "../../lib/authService"
+import { useAuth } from "../../hooks/useAuth"
 
 export default function LoginPage() {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
@@ -46,8 +47,8 @@ export default function LoginPage() {
     }
 
     try {
-      const response = await authService.login(formData.email, formData.password)
-      console.log("Login successful:", response)
+      await login(formData.email, formData.password)
+      console.log("Login successful")
       
       // Redirect to dashboard
       navigate('/dashboard')

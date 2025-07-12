@@ -1,13 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "./ui/button"
-import { Brain, Menu, X } from "lucide-react"
+import { Menu, X, User, LogOut } from "lucide-react"
 import { cn } from "../lib/utils"
+import { useAuth } from "../hooks/useAuth"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { user, isAuthenticated, logout } = useAuth()
+  const navigate = useNavigate()
 
   const navigation = [
     { name: "Home", to: "/" },
@@ -16,7 +19,13 @@ export function Navigation() {
     { name: "About", to: "/about" },
     { name: "Pricing", to: "/pricing" },
   ]
-  
+
+  const handleLogout = async () => {
+    await logout()
+    navigate('/')
+    setIsOpen(false)
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="w-full max-w-none mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,14 +53,31 @@ export function Navigation() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="outline" size="sm">
-                Sign In
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button size="sm">Sign Up</Button>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/dashboard">
+                  <Button variant="outline" size="sm">
+                    <User className="mr-2 h-4 w-4" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button variant="outline" size="sm" onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button size="sm">Sign Up</Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -81,16 +107,39 @@ export function Navigation() {
               ) : null
             )}
             <div className="flex flex-col space-y-2 pt-4 border-t">
-              <Link to="/login" onClick={() => setIsOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full justify-start">
-                  Sign In
-                </Button>
-              </Link>
-              <Link to="/register" onClick={() => setIsOpen(false)}>
-                <Button size="sm" className="w-full">
-                  Registrarse
-                </Button>
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      <User className="mr-2 h-4 w-4" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Link to="/profile" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      <User className="mr-2 h-4 w-4" />
+                      {user?.username || user?.email || 'Profile'}
+                    </Button>
+                  </Link>
+                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" size="sm" className="w-full justify-start">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to="/register" onClick={() => setIsOpen(false)}>
+                    <Button size="sm" className="w-full">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </nav>
         </div>

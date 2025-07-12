@@ -8,11 +8,6 @@ export const authService = {
         password: password,
       });
       
-      if (response.data.session_id) {
-        localStorage.setItem('sessionId', response.data.session_id);
-        localStorage.setItem('userId', response.data.user_id);
-      }
-      
       return response.data;
     } catch (error) {
       console.error('Login error details:', error);
@@ -47,19 +42,29 @@ export const authService = {
     }
   },
 
-  logout() {
-    localStorage.removeItem('sessionId');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('authToken');
+  async logout() {
+    try {
+      await api.post('/api/v1/logout');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   },
 
-  isAuthenticated() {
-    return !!localStorage.getItem('sessionId');
+  async getCurrentUser() {
+    try {
+      const response = await api.get('/api/v1/me');
+      return response.data;
+    } catch (error) {
+      return null;
+    }
   },
 
-  getCurrentUser() {
-    const userId = localStorage.getItem('userId');
-    const sessionId = localStorage.getItem('sessionId');
-    return userId && sessionId ? { userId, sessionId } : null;
+  async isAuthenticated() {
+    try {
+      const user = await this.getCurrentUser();
+      return !!user;
+    } catch (error) {
+      return false;
+    }
   }
 }; 

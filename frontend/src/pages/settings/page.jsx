@@ -52,6 +52,7 @@ import {
   Activity,
 } from "lucide-react"
 import { Link } from "react-router-dom"
+import { DashboardNavigation } from "../../components/dashboard-navigation"
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState("profile")
@@ -124,31 +125,7 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
-          </Link>
-          <nav className="flex items-center space-x-6">
-            <Link to="/dashboard" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/chat" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Chat
-            </Link>
-            <Link to="/reports" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Reports
-            </Link>
-            <Link to="/settings" className="text-blue-600 font-medium">
-              Settings
-            </Link>
-            <Button variant="outline" size="sm">
-              Account
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <DashboardNavigation></DashboardNavigation>
 
       <div className="container mx-auto px-4 py-8 pb-24">
         <div className="mb-8">
