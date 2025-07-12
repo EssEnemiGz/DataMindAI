@@ -3,34 +3,13 @@ import { Button } from "../../components/ui/button"
 import { Badge } from "../../components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
 import { Brain, BarChart3, TrendingUp, DollarSign, FileText, Download, Share } from "lucide-react"
-import { Link } from "react-router-dom"
+import { DashboardNavigation } from "../../components/dashboard-navigation"
 
 export default function ReportsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="w-full px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">DataMindAI</span>
-          </Link>
-          <nav className="flex items-center space-x-6">
-            <Link to="/dashboard" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/reports" className="text-blue-600 font-medium">
-              Reports
-            </Link>
-            <Link to="/settings" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Settings
-            </Link>
-            <Button variant="outline" size="sm">
-              Account
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <DashboardNavigation></DashboardNavigation>
 
       <div className="w-full px-4 py-8">
         <div className="mb-8">
