@@ -54,16 +54,16 @@ export function RecentAnalyses() {
           {recentAnalyses.map((analysis) => (
             <div
               key={analysis.id}
-              className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors gap-3"
             >
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
+              <div className="flex items-center space-x-4 flex-1 min-w-0">
+                <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
                   <FileSpreadsheet className="h-6 w-6 text-blue-600" />
                 </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">{analysis.name}</h4>
-                  <p className="text-sm text-gray-500">{analysis.file}</p>
-                  <div className="flex items-center space-x-2 mt-1">
+                <div className="flex-1 min-w-0 space-y-1">
+                  <h4 className="font-medium text-gray-900 truncate">{analysis.name}</h4>
+                  <p className="text-sm text-gray-500 truncate">{analysis.file}</p>
+                  <div className="flex items-center space-x-2 mt-1 flex-wrap space-y-1">
                     <Badge variant={analysis.status === "completed" ? "default" : "secondary"}>{analysis.status}</Badge>
                     <span className="text-xs text-gray-500">{analysis.type}</span>
                     {analysis.insights > 0 && (
@@ -72,7 +72,7 @@ export function RecentAnalyses() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-between sm:justify-end space-x-2 flex-shrink-0">
                 <span className="text-sm text-gray-500">{analysis.date}</span>
                 <div className="flex items-center space-x-1">
                   <Button variant="ghost" size="sm">

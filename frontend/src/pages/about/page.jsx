@@ -166,7 +166,7 @@ export default function AboutPage() {
               <div className="flex-1">
                 <div className="flex items-center space-x-3 mb-2">
                   <h3 className="text-xl font-bold">Phase 1: Foundation (Q1 2024)</h3>
-                  <Badge className="bg-green-100 text-green-800 !transition-none hover:bg-green-100 hover:opacity-100">Completed</Badge>
+                  <Badge className="bg-blue-100 text-blue-800 !transition-none hover:bg-blue-100 hover:opacity-100">In Progress</Badge>
                 </div>
                 <ul className="space-y-2 text-gray-600">
                   <li>✅ Docker containerization</li>
@@ -193,7 +193,7 @@ export default function AboutPage() {
                 <ul className="space-y-2 text-gray-600">
                   <li>🔄 Backend API development (FastAPI/Python)</li>
                   <li>🔄 Database setup and configuration</li>
-                  <li>🔄 User registration and authentication system</li>
+                  <li>✅ User registration and authentication system</li>
                   <li>🔄 Excel file upload and parsing</li>
                   <li>🔄 Basic data analysis and financial metrics</li>
                 </ul>

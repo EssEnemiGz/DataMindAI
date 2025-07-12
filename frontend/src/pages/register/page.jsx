@@ -77,7 +77,12 @@ export default function RegisterPage() {
       
       // Auto-login after registration
       await authService.login(formData.email, formData.password)
-      navigate('/dashboard')
+      
+      // Wait a moment for the session to be properly set
+      await new Promise(resolve => setTimeout(resolve, 500))
+      
+      // Force a refresh of the auth context
+      window.location.href = '/dashboard'
     } catch (error) {
       console.error("Registration error:", error)
       

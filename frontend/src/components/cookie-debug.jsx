@@ -16,7 +16,9 @@ export const CookieDebug = () => {
     if (cookieString) {
       cookieString.split(';').forEach(cookie => {
         const [name, value] = cookie.trim().split('=');
-        cookies[name] = value;
+        if (name && value) {
+          cookies[name] = value;
+        }
       });
     }
     
@@ -94,7 +96,7 @@ export const CookieDebug = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <h4 className="font-semibold mb-2">Session Cookies:</h4>
+          <h4 className="font-semibold mb-2">Session Cookies ({Object.keys(cookies).length}):</h4>
           <div className="flex flex-col bg-gray-100 p-3 rounded text-sm font-mono max-w-full max-h-[150px] overflow-y-auto">
             {Object.keys(cookies).length > 0 ? (
               Object.entries(cookies).map(([name, value]) => (
@@ -105,6 +107,11 @@ export const CookieDebug = () => {
             ) : (
               <div className="text-gray-500">No cookies found</div>
             )}
+          </div>
+          <div className="mt-2 text-xs text-gray-600">
+            <p>Cookie string: {document.cookie || 'No cookies'}</p>
+            <p>Domain: {window.location.hostname}</p>
+            <p>Protocol: {window.location.protocol}</p>
           </div>
         </div>
 

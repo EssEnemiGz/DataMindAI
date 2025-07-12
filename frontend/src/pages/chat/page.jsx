@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu"
 import {
-  Brain,
   Send,
   User,
   Plus,
@@ -305,7 +304,7 @@ export default function ChatPage() {
               {sidebarOpen ? <X className="h-5 w-5" /> : <Sidebar className="h-5 w-5" />}
             </Button>
             <div className="flex items-center space-x-2">
-              <Brain className="h-6 w-6 text-blue-600" />
+              <img src="/DataMindAI-logo 2 - Without white background.png" alt="DataMindAI Logo" className="h-12 w-12 text-blue-600" />
               <span className="font-semibold text-gray-900">DataMindAI</span>
             </div>
           </div>
@@ -328,7 +327,7 @@ export default function ChatPage() {
             <div className="h-full flex flex-col items-center justify-center p-8">
               <div className="max-w-2xl text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Brain className="h-8 w-8 text-blue-600" />
+                  <img src="/DataMindAI-logo 2 - Without white background.png" alt="DataMindAI Logo" className="h-14 w-14" />
                 </div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">How can I help you today?</h1>
                 <p className="text-gray-600 mb-8">
@@ -357,10 +356,10 @@ export default function ChatPage() {
                       {/* Avatar */}
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          message.type === "user" ? "bg-blue-600 text-white" : "bg-green-600 text-white"
+                          message.type === "user" ? "bg-blue-600 text-white" : "bg-gray-100 text-white"
                         }`}
                       >
-                        {message.type === "user" ? <User className="h-4 w-4" /> : <Brain className="h-4 w-4" />}
+                        {message.type === "user" ? <User className="h-4 w-4" /> : <img src="/DataMindAI-logo 2 - Without white background.png" alt="DataMindAI Logo" className="h-8 w-8" /> }
                       </div>
 
                       {/* Message Content */}
@@ -396,8 +395,8 @@ export default function ChatPage() {
                 {isLoading && (
                   <div className="group">
                     <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center flex-shrink-0">
-                        <Brain className="h-4 w-4" />
+                      <div className="w-8 h-8 rounded-full bg-gray-100 text-white flex items-center justify-center flex-shrink-0">
+                        <img src="/DataMindAI-logo 2 - Without white background.png" alt="DataMindAI Logo" className="h-8 w-8" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-medium text-gray-900 mb-1">DataMindAI</div>
