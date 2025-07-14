@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { Button } from "../../components/ui/button"
 import { Textarea } from "../../components/ui/textarea"
 import { ScrollArea } from "../../components/ui/scroll-area"
+import { useAuth } from "../../hooks/useAuth"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,9 +32,8 @@ import {
   HelpCircle,
   Moon,
   Sun,
-  GripVertical,
 } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // Example mock conversations
 const mockConversations = [
@@ -60,14 +60,11 @@ export default function ChatPage() {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [sidebarWidth, setSidebarWidth] = useState(260)
-  const [isResizing, setIsResizing] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false) // Changed to false for mobile-first approach
   const [currentConversation, setCurrentConversation] = useState(null)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
-  const sidebarRef = useRef(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -77,35 +74,20 @@ export default function ChatPage() {
     scrollToBottom()
   }, [messages])
 
-  // Handle sidebar resizing
+  // Auto-open sidebar on desktop initially
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!isResizing) return
-
-      const newWidth = e.clientX
-      if (newWidth >= 200 && newWidth <= 400) {
-        setSidebarWidth(newWidth)
-      }
+    if (window.innerWidth >= 768) {
+      setSidebarOpen(true)
     }
+  }, [])
 
-    const handleMouseUp = () => {
-      setIsResizing(false)
-    }
-
-    if (isResizing) {
-      document.addEventListener("mousemove", handleMouseMove)
-      document.addEventListener("mouseup", handleMouseUp)
-      document.body.style.cursor = "col-resize"
-      document.body.style.userSelect = "none"
-    }
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove)
-      document.removeEventListener("mouseup", handleMouseUp)
-      document.body.style.cursor = ""
-      document.body.style.userSelect = ""
-    }
-  }, [isResizing])
+  const { logout } = useAuth()
+  const navigate = useNavigate()
+  const handleLogout = async () => {
+    await logout()
+    navigate('/')
+    setIsOpen(false)
+}
 
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isLoading) return
@@ -153,6 +135,10 @@ export default function ChatPage() {
         timestamp: new Date(),
       },
     ])
+    // Close sidebar on mobile after selecting conversation
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false)
+    }
   }
 
   const handleSuggestedPrompt = (prompt) => {
@@ -173,21 +159,38 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 relative">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
       <div
-        ref={sidebarRef}
-        className={`${sidebarOpen ? "flex" : "hidden"} bg-gray-900 text-white flex-col overflow-hidden relative`}
-        style={{ width: sidebarWidth }}
+        className={`fixed md:relative z-50 h-full bg-gray-900 text-white flex flex-col overflow-hidden transition-transform duration-300 ease-in-out ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full md:-translate-x-full'
+        }`}
+        style={{ width: sidebarOpen ? '320px' : '0px' }} // Dynamic width
       >
         {/* Sidebar Header */}
-        <div className="p-3 border-b border-gray-700">
+        <div className="p-3 border-b border-gray-700 flex items-center justify-between">
           <Button
             onClick={startNewChat}
-            className="w-full bg-transparent border border-gray-600 hover:bg-gray-800 text-white justify-start"
+            className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-800 text-white justify-start mr-2"
           >
             <Plus className="h-4 w-4 mr-2" />
             New conversation
+          </Button>
+          <Button
+            onClick={() => setSidebarOpen(false)}
+            variant="ghost"
+            size="sm"
+            className="md:hidden text-gray-400 hover:text-white"
+          >
+            <X className="h-4 w-4" />
           </Button>
         </div>
 
@@ -236,8 +239,8 @@ export default function ChatPage() {
           </div>
         </ScrollArea>
 
-        {/* Sidebar Footer */}
-        <div className="p-3 border-t border-gray-700">
+        {/* Sidebar Footer - User Profile */}
+        <div className="mt-auto p-3 border-t border-gray-700">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="w-full justify-start p-2 h-auto text-white hover:bg-gray-800">
@@ -254,51 +257,42 @@ export default function ChatPage() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56" side="top">
-              <DropdownMenuItem>
-                <User className="h-4 w-4 mr-2" />
-                My profile
+              <DropdownMenuItem asChild>
+                <Link to="/profile" className="flex items-center">
+                  <User className="h-4 w-4 mr-2" />
+                  My profile
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Settings className="h-4 w-4 mr-2" />
-                Settings
+              <DropdownMenuItem asChild>
+                <Link to="/settings" className="flex items-center">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Settings
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard className="h-4 w-4 mr-2" />
                 Billing
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setIsDarkMode(!isDarkMode)}>
-                {isDarkMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
-                {isDarkMode ? "Light mode" : "Dark mode"}
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <HelpCircle className="h-4 w-4 mr-2" />
-                Help & Support
+              <DropdownMenuItem asChild>
+                <Link to={"/docs"} className="flex items-center">
+                  <HelpCircle className="h-4 w-4 mr-2" />
+                  Help & Support
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-600">
+              <DropdownMenuItem className="text-red-600" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-
-        {/* Resize Handle */}
-        <div
-          className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-gray-600 transition-colors group"
-          onMouseDown={() => setIsResizing(true)}
-        >
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <GripVertical className="h-4 w-4 text-gray-400" />
-          </div>
-        </div>
       </div>
 
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col relative z-10">
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+        <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center space-x-3">
             <Button variant="ghost" size="sm" onClick={() => setSidebarOpen(!sidebarOpen)} className="text-gray-600">
               {sidebarOpen ? <X className="h-5 w-5" /> : <Sidebar className="h-5 w-5" />}
@@ -321,7 +315,7 @@ export default function ChatPage() {
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 overflow-hidden min-h-0">
           {messages.length === 0 ? (
             // Empty State
             <div className="h-full flex flex-col items-center justify-center p-8">
@@ -416,7 +410,7 @@ export default function ChatPage() {
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-gray-200 bg-white p-4 min-h-[80px]">
+        <div className="border-t border-gray-200 bg-white p-4 min-h-[80px] flex-shrink-0">
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               <Textarea
