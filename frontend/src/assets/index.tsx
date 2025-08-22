@@ -26,7 +26,7 @@ function Index() {
                 <ArrowRight className='size-5'></ArrowRight>
               </ButtonBlack>
               <Button className='text-lg flex gap-3 items-center px-8'>
-                <img src="../../public/github.svg" alt="GitHub Logo" className='w-5 h-5' />
+                <img src="/github.svg" alt="GitHub Logo" className='w-5 h-5' />
                 Check in GitHub
               </Button>
             </div>
