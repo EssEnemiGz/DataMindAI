@@ -1,10 +1,11 @@
 import { Link, BrowserRouter } from 'react-router-dom'
+import ButtonBlack from './ui/button-black.tsx'
 import Button from './ui/button.tsx'
 
 function Header() {
   return (
     <>
-      <header className='flex items-center p-2 px-8 w-full justify-between'>
+      <header className='sticky flex items-center p-2 px-8 w-full justify-between bg-white bg-opacity-30 backdrop-blur-md border-b border-gray-200'>
         <div className='flex'>
           <BrowserRouter>
             <Link to="/" className="flex items-center gap-1">
@@ -22,12 +23,14 @@ function Header() {
             <Link to="/pricing" className='text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors'>Pricing</Link>
           </BrowserRouter>
         </div>
-        <div className='flex space-x-1'>
+        <div className='flex space-x-4'>
           <BrowserRouter>
             <Link to="/login">
-              <Button>Hola</Button>
+              <Button>Login</Button>
             </Link>
-            <Link to="/register"></Link>
+            <Link to="/register">
+              <ButtonBlack>Register</ButtonBlack>
+            </Link>
           </BrowserRouter>
         </div>
       </header>
